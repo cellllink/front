@@ -1,0 +1,31 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+
+  :global {
+    .menu {
+      width: 256px;
+      height: 100vh;
+      overflow: hidden;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .container {
+      width: calc(100vw - 257px);
+      height: 100vh;
+      overflow-y: scroll;
+    }
+  }
+}
+
+.user {
+  :global {
+    .logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+  }
+}

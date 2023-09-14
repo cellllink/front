@@ -171,4 +171,7 @@ button::-moz-focus-inner {
 /* Switching on box-sizing: border-box by default; toggle this off if you want more granular control */
 body {
   box-sizing: border-box;
+  min-width: 1150px;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }

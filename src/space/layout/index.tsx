@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import loadable from "@loadable/component";
 import { SettingModal } from "./setting.modal";
 import { IconFont } from "../../share/component/iconfont";
@@ -9,9 +9,11 @@ import { Dropdown, MenuProps } from "antd";
 
 const Defect = loadable(() => import("../defect"));
 const Todo = loadable(() => import("../todo"));
+const Schedule = loadable(() => import("../schedule"));
 
 export function Layout() {
   const [showSettingModal, setShowSettingModal] = useState(false);
+  const apps = ["defect", "todo", "schedule"];
 
   const out = () => {
     console.log("已退出");
@@ -29,7 +31,13 @@ export function Layout() {
       <div className={style.layout}>
         <div className="menu column">
           <div></div>
-          <div className="flex1">123</div>
+          <div className="flex1">
+            {apps.map((app) => (
+              <div>
+                <Link to={app}>{app}</Link>
+              </div>
+            ))}
+          </div>
           <div className="pd-v_16 pd-h_8 row-v_c cs_p">
             <Dropdown menu={{ items }} placement="topLeft" arrow>
               <div className={"flex1 row-v_c " + style.user}>
@@ -44,6 +52,7 @@ export function Layout() {
           <Routes>
             <Route path="defect" element={<Defect />} />
             <Route path="todo" element={<Todo />} />
+            <Route path="schedule" element={<Schedule />} />
           </Routes>
         </div>
       </div>

@@ -3,6 +3,11 @@ import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { HashRouter, Routes } from "react-router-dom";
 import { ConfigProvider } from "antd";
+import dayjs from "dayjs";
+import zhCN from "antd/locale/zh_CN";
+import "dayjs/locale/zh-cn";
+
+dayjs.locale("zh-cn");
 
 export function bootstrap(main: React.ReactNode) {
   const RootElement = document.getElementById("root");
@@ -11,7 +16,7 @@ export function bootstrap(main: React.ReactNode) {
   ReactDOM.createRoot(RootElement).render(
     <React.StrictMode>
       <RecoilRoot>
-        <ConfigProvider>
+        <ConfigProvider locale={zhCN}>
           <HashRouter>
             <Routes>{main}</Routes>
           </HashRouter>

@@ -6,14 +6,14 @@
 
   :global {
     .menu {
-      width: 256px;
+      width: 199px;
       height: 100vh;
       overflow: hidden;
       border-right: 1px solid var(--border-color);
     }
 
     .container {
-      width: calc(100% - 257px);
+      width: calc(100% - 200px);
       height: 100vh;
       overflow-y: scroll;
     }

@@ -172,6 +172,5 @@ button::-moz-focus-inner {
 body {
   box-sizing: border-box;
   min-width: 1150px;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: hidden;
 }

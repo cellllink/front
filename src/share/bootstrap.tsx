@@ -16,7 +16,16 @@ export function bootstrap(main: React.ReactNode) {
   ReactDOM.createRoot(RootElement).render(
     <React.StrictMode>
       <RecoilRoot>
-        <ConfigProvider locale={zhCN}>
+        <ConfigProvider
+          locale={zhCN}
+          theme={{
+            components: {
+              Menu: {
+                iconSize: 20,
+              },
+            },
+          }}
+        >
           <HashRouter>
             <Routes>{main}</Routes>
           </HashRouter>

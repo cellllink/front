@@ -1,10 +1,7 @@
-import React from "react";
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import { getMenuItem } from "../../share/util/antd.util";
-
-type MenuItem = Required<MenuProps>["items"][number];
 
 const items: MenuProps["items"] = [
   getMenuItem("Navigation One", "sub1", <MailOutlined />, [

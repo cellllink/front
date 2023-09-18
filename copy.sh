@@ -1,0 +1,1 @@
+cp src/${1}.tsx src/index.tsx

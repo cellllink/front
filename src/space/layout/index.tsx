@@ -14,6 +14,8 @@ const Schedule = loadable(() => import("../schedule"));
 const Bbs = loadable(() => import("../bbs"));
 const Cloud = loadable(() => import("../cloud"));
 const Organization = loadable(() => import("../organization"));
+const Demand = loadable(() => import("../demand"));
+const Project = loadable(() => import("../project"));
 
 export function Layout() {
   const [showSettingModal, setShowSettingModal] = useState(false);
@@ -32,7 +34,9 @@ export function Layout() {
   ];
 
   const menuitems: MenuProps["items"] = [
-    getMenuItem(<Link to="organization">组织管理</Link>, "organization", <IconFont type="icon-organization" className="fs_24" />),
+    getMenuItem(<Link to="organization">组织管理</Link>, "organization", <IconFont type="icon-organization" />),
+    getMenuItem(<Link to="demand">需求管理</Link>, "demand", <IconFont type="icon-demand" />),
+    getMenuItem(<Link to="project">项目管理</Link>, "project", <IconFont type="icon-project" />),
     getMenuItem(<Link to="defect">缺陷管理</Link>, "defect", <IconFont type="icon-defect" />),
     getMenuItem(<Link to="todo">代办清单</Link>, "todo", <IconFont type="icon-todo" />),
     getMenuItem(<Link to="schedule">我的日程</Link>, "schedule", <IconFont type="icon-schedule" />),
@@ -67,6 +71,8 @@ export function Layout() {
             <Route path="bbs" element={<Bbs />} />
             <Route path="cloud" element={<Cloud />} />
             <Route path="organization" element={<Organization />} />
+            <Route path="demand" element={<Demand />} />
+            <Route path="project" element={<Project />} />
           </Routes>
         </div>
       </div>

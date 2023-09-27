@@ -7,7 +7,7 @@ export interface QueryParams {
 }
 
 export interface IResponse<Date> {
-  status: number;
+  code: number;
   message?: string;
   data?: Date;
 }

@@ -1,14 +1,11 @@
-import { ApiHttpService } from "../base.http.service";
+import { ApiBaseHttpService, Params } from "../base.http.service";
+import { LoginVo } from "../vo/api.auth.vo";
 
-class AuthHttpService extends ApiHttpService {
-  login() {
-    this.post("/auth/login", {
-      account: "care",
-      password: "card",
-    }).subscribe({
-      next: (data) => console.log(data),
-      error: (err) => console.error(err),
-    });
+class AuthHttpService extends ApiBaseHttpService {
+  protected modulePrefix = "/auth"; // 模块前缀
+
+  login(params: Params) {
+    return this.post<LoginVo>("/login", params);
   }
 }
 

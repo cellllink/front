@@ -23,23 +23,17 @@ export interface QueryData<Data> {
   pages: number;
 }
 
-interface BaseHttpServiceImpl {
-  host: string; // 域名
-  hostPrefix: string; // 路径统一前缀
-}
-
-interface Option {
+interface HttpOption {
   headers?: Record<string, any>;
-  showErrorMessage?: boolean;
 }
 
-export class BaseHttpService implements BaseHttpServiceImpl {
-  host = ""; // 域名
-  hostPrefix = ""; // 公共域名前缀
+export class BaseHttpService {
+  private host = ""; // 域名
+  private hostPrefix = ""; // 公共域名前缀
+  protected modulePrefix = ""; // 模块前缀
 
-  defaultOption: Option = {
+  private defaultHttpOption: HttpOption = {
     headers: {},
-    showErrorMessage: true,
   };
 
   constructor(host: string, hostPrefix: string) {
@@ -47,23 +41,23 @@ export class BaseHttpService implements BaseHttpServiceImpl {
     this.hostPrefix = hostPrefix;
   }
 
-  successHandle<T>({ response }: AjaxResponse<IResponse<T>>): T {
+  private successHandle<T>({ response }: AjaxResponse<IResponse<T>>, httpOption: HttpOption = {}): T {
     if (response.code !== 200) throw response.message;
     return response.data;
   }
 
-  post<T>(url: string, body: Params, option: Option = {}): Observable<T> {
-    const { headers } = Object.assign({}, this.defaultOption, option);
+  public post<T>(url: string, body: Params, httpOption: HttpOption = {}): Observable<T> {
+    httpOption = Object.assign({}, this.defaultHttpOption, httpOption);
 
     return ajax<IResponse<T>>({
       method: "POST",
-      url: this.host + this.hostPrefix + url,
-      headers,
+      url: this.host + this.hostPrefix + this.modulePrefix + url,
+      headers: httpOption.headers,
       body,
-    }).pipe(map(this.successHandle));
+    }).pipe(map((res) => this.successHandle(res, httpOption)));
   }
 
-  query<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
+  public query<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
     return this.post<QueryData<T>>(url, {
       ...params,
       pageNumber,
@@ -72,7 +66,7 @@ export class BaseHttpService implements BaseHttpServiceImpl {
   }
 }
 
-export class ApiHttpService extends BaseHttpService {
+export class ApiBaseHttpService extends BaseHttpService {
   constructor() {
     super(CommonConfig.apiHost, CommonConfig.apiHostPrefix);
   }

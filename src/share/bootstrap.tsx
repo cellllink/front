@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { HashRouter, Routes } from "react-router-dom";
-import { ConfigProvider } from "antd";
+import { ConfigProvider, App } from "antd";
 import dayjs from "dayjs";
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
@@ -26,9 +26,11 @@ export function bootstrap(main: React.ReactNode) {
             },
           }}
         >
-          <HashRouter>
-            <Routes>{main}</Routes>
-          </HashRouter>
+          <App>
+            <HashRouter>
+              <Routes>{main}</Routes>
+            </HashRouter>
+          </App>
         </ConfigProvider>
       </RecoilRoot>
     </React.StrictMode>

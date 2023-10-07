@@ -1,16 +1,22 @@
-import { Form, Input, Button } from "antd";
+import React from "react";
+import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Board } from "./component/board";
 import { ThirdParty } from "./component/thirdParty";
 import { Link } from "react-router-dom";
+import { authHttpService } from "@share/http/api/auth.http.service";
+import { Params } from "@share/http";
 
 import style from "./login.module.scss";
 
-export function Login() {
+export const Login: React.FC = () => {
   const [loginForm] = Form.useForm();
 
-  const onLogin = (value: any) => {
-    console.log(value);
+  const onLogin = (value: Params) => {
+    authHttpService.login(value).subscribe({
+      next: (data) => {},
+      error: (errMsg: string) => message.error(errMsg),
+    });
   };
 
   return (
@@ -19,7 +25,7 @@ export function Login() {
         <Board />
 
         <div className="column-v_c mg-l_40">
-          <span className="mg-t_6 mg-b_32 fs_18">组织、简单、纯粹</span>
+          <span className="mg-t_6 mg-b_32 fs_18">简单、纯粹</span>
 
           <Form form={loginForm} onFinish={onLogin}>
             <Form.Item name="account" rules={[{ required: true, message: "请输入账号" }]}>
@@ -46,4 +52,4 @@ export function Login() {
       </div>
     </div>
   );
-}
+};

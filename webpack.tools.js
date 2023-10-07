@@ -58,14 +58,14 @@ function removeFromArrayByCondition(
 // 多页面工具函数, 拿到所有的入口文件
 function allSitePath(isEnvDevelopment, paths) {
   let entryFiles = getEntryFilesFormCommandLine(paths);
-  !entryFiles && (entryFiles = glob.sync(paths.appSrc + "/views/*"));
+  // !entryFiles && (entryFiles = glob.sync(paths.appSrc + "/*"));
+  !entryFiles && (entryFiles = ["/oauth"]);
 
-  // eslint-disable-next-line prefer-const
-  let map = {};
+  const map = {};
   entryFiles.forEach((item) => {
     const filename = item.substring(item.lastIndexOf("/") + 1);
     // const filePath = `${item}/${filename}.tsx`;
-    const filePath = resolveModule(resolveApp, `${item}/${filename}`, paths);
+    const filePath = resolveModule(resolveApp, `src/${filename}`, paths);
     map[filename] = ["react-hot-loader/patch", isEnvDevelopment && require.resolve("react-dev-utils/webpackHotDevClient"), filePath].filter(
       Boolean
     );

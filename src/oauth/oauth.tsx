@@ -1,7 +1,7 @@
 import { Navigate, Route } from "react-router-dom";
-import { bootstrap } from "./share/bootstrap";
-import { Login } from "./oauth/login";
-import { Register } from "./oauth/register";
+import { bootstrap } from "../share/bootstrap";
+import { Login } from "./login";
+import { Register } from "./register";
 
 import "./share/style/index.css";
 

@@ -11,8 +11,8 @@ module.exports = {
 
     configure: (webpackConfig, { env, paths }) => {
       // 修改基础paths
-      paths.appHtml = resolveApp("./public/index.html");
-      paths.appIndexJs = resolveModule(resolveApp, "./src/index", paths);
+      paths.appHtml = resolveApp("public/index.html");
+      paths.appIndexJs = resolveModule(resolveApp, "src/index", paths);
 
       // 修改入口
       webpackConfig.entry = {
@@ -33,14 +33,16 @@ module.exports = {
       // 增加插件
       plugins = [
         new HtmlWebPackPlugin({
-          template: "./public/index.html",
+          inject: true,
           filename: "oauth.html",
           chunks: ["oauth"],
+          template: resolveApp("public/index.html"),
         }),
         new HtmlWebPackPlugin({
-          template: "./public/index.html",
+          inject: true,
           filename: "oauth.html",
           chunks: ["space"],
+          template: resolveApp("public/index.html"),
         }),
         ...plugins,
       ];

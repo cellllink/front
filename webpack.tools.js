@@ -14,7 +14,7 @@ function getEntryFilesFormCommandLine(paths) {
   let entryFiles = null;
   if (flagIndex !== -1) {
     entryFiles = argvs.slice(flagIndex + 1).map((item) => {
-      return `${paths.appSrc}/views/${item}`;
+      return `${paths.appSrc}/${item}`;
     });
   }
   return entryFiles;

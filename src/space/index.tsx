@@ -2,7 +2,7 @@ import { Navigate, Route } from "react-router-dom";
 import { bootstrap } from "../share/bootstrap";
 import { Layout } from "./layout";
 
-import "./share/style/index.css";
+import "../share/style/index.css";
 
 bootstrap(
   <>

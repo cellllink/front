@@ -3,11 +3,12 @@ const { getProcessArgv, resolve } = require("./craco.util");
 
 // 加载env配置到进程中
 require("dotenv").config({
-  path: resolve("./.env"),
+  path: resolve(".env"),
 });
 
-const { port = 3000, project = "oauth", REACT_APP_PROJECT } = getProcessArgv();
-console.log(process.env.REACT_APP_PROJECT);
+const { port = 3000, project = "oauth" } = getProcessArgv();
+const PROJECT = process.env.REACT_APP_SERVER_PROJECT || project;
+const PORT = process.env.REACT_APP_SERVER_PORT || port;
 
 module.exports = {
   webpack: {
@@ -16,8 +17,8 @@ module.exports = {
     },
 
     configure: (webpackConfig, { env, paths }) => {
-      paths.appIndexJs = resolve(`src/${project}/index.tsx`);
-      webpackConfig.entry = resolve(`src/${project}/index.tsx`);
+      paths.appIndexJs = resolve(`src/${PROJECT}/index.tsx`);
+      webpackConfig.entry = resolve(`src/${PROJECT}/index.tsx`);
 
       return {
         ...webpackConfig,
@@ -26,6 +27,6 @@ module.exports = {
     },
   },
   devServer: {
-    port,
+    port: PORT,
   },
 };

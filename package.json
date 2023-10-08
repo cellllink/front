@@ -26,8 +26,8 @@
     "zustand": "^4.3.9"
   },
   "scripts": {
-    "start": "craco start --project=oauth",
-    "build": "craco build"
+    "start": "craco start",
+    "build": "craco build --project=oauth"
   },
   "eslintConfig": {
     "extends": [

@@ -6,6 +6,7 @@ import { ConfigProvider, App } from "antd";
 import dayjs from "dayjs";
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
+import { ConfigProviderTheme } from "./config";
 
 dayjs.locale("zh-cn");
 
@@ -16,16 +17,7 @@ export function bootstrap(main: React.ReactNode) {
   ReactDOM.createRoot(RootElement).render(
     <React.StrictMode>
       <RecoilRoot>
-        <ConfigProvider
-          locale={zhCN}
-          theme={{
-            components: {
-              Menu: {
-                iconSize: 20,
-              },
-            },
-          }}
-        >
+        <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
           <App>
             <HashRouter>
               <Routes>{main}</Routes>

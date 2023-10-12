@@ -13,5 +13,9 @@ export function SettingModal({ show, close }: Prop) {
     close();
   };
 
-  return <Modal title="设置" centered open={show} onOk={() => onOk()} onCancel={() => onCancel()}></Modal>;
+  return (
+    <Modal title="设置" centered open={show} onOk={() => onOk()} onCancel={() => onCancel()}>
+      123
+    </Modal>
+  );
 }

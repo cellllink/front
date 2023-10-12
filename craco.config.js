@@ -6,9 +6,7 @@ require("dotenv").config({
   path: resolve(".env"),
 });
 
-const { port = 3000, project = "oauth" } = getProcessArgv();
-const PROJECT = process.env.REACT_APP_SERVER_PROJECT || project;
-const PORT = process.env.REACT_APP_SERVER_PORT || port;
+const { project = "oauth", port = 3000 } = getProcessArgv();
 
 module.exports = {
   webpack: {
@@ -17,8 +15,8 @@ module.exports = {
     },
 
     configure: (webpackConfig, { env, paths }) => {
-      paths.appIndexJs = resolve(`src/${PROJECT}/index.tsx`);
-      webpackConfig.entry = resolve(`src/${PROJECT}/index.tsx`);
+      paths.appIndexJs = resolve(`src/${project}/index.tsx`);
+      webpackConfig.entry = resolve(`src/${project}/index.tsx`);
 
       return {
         ...webpackConfig,
@@ -27,6 +25,6 @@ module.exports = {
     },
   },
   devServer: {
-    port: PORT,
+    port,
   },
 };

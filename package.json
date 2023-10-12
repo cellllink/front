@@ -26,8 +26,11 @@
     "zustand": "^4.3.9"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build --project=oauth"
+    "start::oauth": "craco start --project=oauth --port=3000",
+    "start::space": "craco start --project=space --port=4000",
+    "start::manage": "craco start --project=manage --port=5000",
+    "start::website": "craco start --project=website --port=6000",
+    "build": "craco build"
   },
   "eslintConfig": {
     "extends": [

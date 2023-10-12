@@ -3,7 +3,7 @@ import { bootstrap } from "../share/bootstrap";
 import { Login } from "./login";
 import { Register } from "./register";
 
-import "../share/style/index.css";
+import "../share/style/index.scss";
 
 bootstrap(
   <>

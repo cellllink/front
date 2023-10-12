@@ -16,5 +16,9 @@ export default function Schedule() {
     return info.originNode;
   };
 
-  return <Calendar cellRender={cellRender} />;
+  return (
+    <div className="pd_8">
+      <Calendar cellRender={cellRender} />
+    </div>
+  );
 }

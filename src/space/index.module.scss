@@ -1,0 +1,39 @@
+.layout {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  :global {
+    .header {
+      height: 50px;
+
+      .org {
+        width: 164px;
+
+        &_name {
+          max-width: 120px;
+        }
+      }
+
+      .userlogo {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
+    }
+
+    .containter {
+      height: calc(100vh - 50px);
+    }
+
+    .menu {
+      width: 180px;
+      height: 100%;
+    }
+
+    .app {
+      width: calc(100vw - 180px);
+      height: 100%;
+    }
+  }
+}

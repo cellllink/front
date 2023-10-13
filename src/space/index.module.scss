@@ -26,9 +26,14 @@
       height: calc(100vh - 50px);
     }
 
-    .menu {
+    .option {
       width: 180px;
       height: 100%;
+    }
+
+    .menus {
+      max-height: calc(100% - 45px);
+      overflow-y: auto;
     }
 
     .app {

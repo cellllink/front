@@ -75,8 +75,8 @@ const Menus = () => {
   );
 
   return (
-    <div className="pd-b_8 flex1">
-      <Menu defaultSelectedKeys={defaultSelectedKeys} mode="inline" items={menuitems} />;
+    <div className="pd-b_8 flex1 menus scrollbar__w1">
+      <Menu defaultSelectedKeys={defaultSelectedKeys} mode="inline" items={menuitems} />
     </div>
   );
 };
@@ -94,7 +94,7 @@ const InfoSetting = () => {
         <IconFont type="icon-setting" className="fs_24" onClick={() => setShowSettingModal(true)} />
       </div>
 
-      <SettingModal show={!showSettingModal} close={() => setShowSettingModal(false)} />
+      <SettingModal show={showSettingModal} close={() => setShowSettingModal(false)} />
     </>
   );
 };
@@ -119,7 +119,7 @@ export function Index() {
         <Header />
       </div>
       <div className="containter row">
-        <div className="menu column br_r">
+        <div className="option column br_r">
           <Menus />
           <InfoSetting />
         </div>

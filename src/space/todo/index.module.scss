@@ -1,0 +1,13 @@
+.todo {
+  :global {
+    .menu {
+      // 48px + 41px
+      max-height: calc(100% - 88px);
+      overflow-y: auto;
+    }
+
+    .steps {
+      transition: all 0.25s ease;
+    }
+  }
+}

@@ -71,11 +71,11 @@ const Menus = () => {
   const defaultSelectedKeys: string[] = [location.pathname.split("/").reverse()[0]];
 
   const menuitems: MenuProps["items"] = Apps.map((app) =>
-    getMenuItem(<Link to={app.to}>{app.name}</Link>, app.to, <IconFont type={"icon-" + app.to} style={{ fontSize: "22px" }} />)
+    getMenuItem(<Link to={app.to}>{app.name}</Link>, app.to, <IconFont type={"icon-" + app.to} style={{ fontSize: "24px" }} />)
   );
 
   return (
-    <div className="pd-b_8 flex1 menus scrollbar__w1">
+    <div className="flex1 menus scrollbar__w1">
       <Menu defaultSelectedKeys={defaultSelectedKeys} mode="inline" items={menuitems} />
     </div>
   );
@@ -86,9 +86,9 @@ const InfoSetting = () => {
 
   return (
     <>
-      <div className="row_c_sb mg-h_8 pd-v_8 br_t">
+      <div className="row_c_sb pd_8 br_t">
         <span>
-          <span className="fs_18 fw">Cellink</span>
+          <span className="fs_18 lh_24 fw">Cellink</span>
           <span className="mg-l_4 fs_12">v1.0.0</span>
         </span>
         <IconFont type="icon-setting" className="fs_24" onClick={() => setShowSettingModal(true)} />

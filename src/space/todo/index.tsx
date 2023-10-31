@@ -12,6 +12,7 @@ import { getMenuItem } from "../../share/util/antd.util";
 import { Input } from "antd";
 import style from "./index.module.scss";
 import { useState } from "react";
+import { IconFont } from "@share/component/iconfont";
 
 export default function Todo() {
   const [title, setTitle] = useState<string>("xxxxx");
@@ -71,7 +72,7 @@ export default function Todo() {
     <div className={style.todo + " full row"}>
       <div className="full_y column br_r">
         <div className="pd_4">
-          <Input placeholder="关键字搜索" size="large" suffix={<SearchOutlined />} />
+          <Input placeholder="关键字搜索" suffix={<SearchOutlined />} />
         </div>
 
         <div className="menus flex1 scrollbar__w1">
@@ -81,11 +82,11 @@ export default function Todo() {
         <div className="pd_8 br_t cs_p">
           <div className="row_c_sb">
             <div className="row-v_c flex1">
-              <PlusCircleOutlined className="fs_24" />
+              <PlusCircleOutlined className="fs_20" />
               <span className="mg-l_8 fs_16 lh_24">新建列表</span>
             </div>
             <Divider type="vertical" />
-            <FolderAddOutlined className="fs_24" />
+            <FolderAddOutlined className="fs_20" />
           </div>
         </div>
       </div>
@@ -93,14 +94,16 @@ export default function Todo() {
       <div className="flex1 pd-h_8">
         <div className="row-v_c br_b pd-v_8" onClick={() => setShowSteps(!showSteps)}>
           <FolderOutlined style={{ fontSize: "24px" }} />
-          <span className="pd-l_8 fs_20 lh_24">今日工作安排</span>
+          <span className="pd-l_8 fs_16 lh_24">今日工作安排</span>
         </div>
 
         <List
           dataSource={listdata}
           renderItem={() => (
             <List.Item>
-              <Checkbox onChange={listitemonChange}>adhiadhasdk</Checkbox>
+              <Checkbox className="mg-r_8" onChange={listitemonChange}></Checkbox>
+              <span className="flex1">啊速度很快</span>
+              <IconFont type="icon-starline" className="fs_16 cs_p" />
             </List.Item>
           )}
         />
@@ -109,7 +112,7 @@ export default function Todo() {
       <div
         className="full_y br_l steps"
         style={{
-          width: showSteps ? "300px" : 0,
+          width: showSteps ? "280px" : 0,
         }}
       >
         <div className="row_c_sb br_b mg-h_8 pd-v_8">

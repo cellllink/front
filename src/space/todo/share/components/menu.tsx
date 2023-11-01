@@ -1,12 +1,24 @@
 import { FolderOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import { getMenuItem } from "@share/util/antd.util";
-import { Input, Menu } from "antd";
-import { useState } from "react";
+import { Input, Menu as AntdMenu } from "antd";
+import { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
-import { currentGroupSubject, currentItemSubject } from "../util/signal.util";
+import { AddGroupOrListSubject, currentGroupSubject, currentItemSubject } from "../util/signal.util";
+import { TodoGroup } from "../type";
 
-export default function GroupMenu() {
+function Group(group: TodoGroup) {}
+
+function List() {}
+
+export default function Menu() {
   const [title, setTitle] = useState<string>("xxxxx");
+
+  useEffect(() => {
+    const Subscription = AddGroupOrListSubject.subscribe((type: "group" | "list") => {
+      console.log(type);
+    });
+    return () => Subscription.unsubscribe();
+  }, []);
 
   const items: MenuProps["items"] = [
     getMenuItem("Navigation One", "sub1", <FolderOutlined style={{ fontSize: "16px" }} />, [
@@ -15,24 +27,6 @@ export default function GroupMenu() {
       getMenuItem("Option 3", "3"),
       getMenuItem("Option 4", "4"),
     ]),
-
-    getMenuItem("Navigation Two", "sub2", <FolderOutlined style={{ fontSize: "16px" }} />, [
-      getMenuItem("Option 5", "5"),
-      getMenuItem("Option 6", "6"),
-      getMenuItem("Submenu", "sub3", null, [
-        getMenuItem("Option 7", "7", null, [getMenuItem("Option 91", "91"), getMenuItem("Option 101", "101")]),
-        getMenuItem("Option 8", "8"),
-      ]),
-    ]),
-
-    getMenuItem("Navigation Three", "sub4", <FolderOutlined style={{ fontSize: "16px" }} />, [
-      getMenuItem("Option 9", "9"),
-      getMenuItem("Option 10", "10"),
-      getMenuItem("Option 11", "11"),
-      getMenuItem("Option 12", "12"),
-    ]),
-    getMenuItem("Option 13", "13"),
-    getMenuItem("Option 14", "14"),
 
     getMenuItem(
       <Input
@@ -54,7 +48,7 @@ export default function GroupMenu() {
 
   return (
     <div className="menu flex1 scrollbar__w1">
-      <Menu onClick={onClick} style={{ width: 220, height: "100%" }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220, height: "100%" }} mode="inline" items={items} />
     </div>
   );
 }

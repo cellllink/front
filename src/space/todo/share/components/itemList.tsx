@@ -4,6 +4,7 @@ import { Checkbox, Empty, Input, Popover, Spin } from "antd";
 import { IconFont } from "@share/component/iconfont";
 import { currentGroupSubject, currentItemSubject } from "../util/signal.util";
 import { TodoGroup, TodoItem } from "../type";
+import { TodoIcons } from "@share/config";
 
 interface ItemComponentProp {
   item: TodoItem;
@@ -35,7 +36,6 @@ interface ItemListHeaderComponentProp {
 }
 
 function ItemListHeader({ group, setGroup }: ItemListHeaderComponentProp) {
-  const [icons] = useState<string[]>(["task", "wiki", "task", "wiki", "task", "wiki", "wiki", "wiki", "wiki"]);
   const [showPopover, setShowPopover] = useState<boolean>(false);
   const [showChangeTitleInput, setShowChangeTitleInput] = useState<boolean>(false);
   const [groupTitle, setGroupTitle] = useState<string>(group.title);
@@ -58,7 +58,7 @@ function ItemListHeader({ group, setGroup }: ItemListHeaderComponentProp) {
         onOpenChange={setShowPopover}
         content={
           <div className="row row-wp_w cs_p" style={{ maxWidth: "192px" }}>
-            {icons.map((i) => (
+            {TodoIcons.map((i) => (
               <div className="pd_4 hr" onClick={() => onChangeGroupIcon(i)}>
                 <IconFont type={"icon-" + i} className="fs_24" />
               </div>

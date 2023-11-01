@@ -2,7 +2,7 @@ export const CommonConfig = {
   apiHost: process.env.REACT_APP_API_HOST || "",
   apiHostPrefix: process.env.REACT_APP_API_HOST_PREFIX || "",
 
-  aliIconfontKeys: ["font_3160388_i38dbyxxlc"],
+  aliIconfontKeys: ["font_3160388_911x95a6f2u"],
 };
 
 export const OAuthConfig = {};
@@ -52,4 +52,20 @@ export const Apps = [
     to: "cloud",
     name: "云盘",
   },
+];
+
+// 表情 天气 水果 蔬菜 动物 各12个
+export const TodoIcons = [
+  "emoji-angel",
+  "emoji-cool",
+  "emoji-angry",
+  "emoji-dizzy",
+  "emoji-cry",
+  "emoji-expressionless",
+  "emoji-flushed",
+  "emoji-happy",
+  "emoji-kiss",
+  "emoji-smiling",
+  "emoji-thinking",
+  "emoji-tongue",
 ];

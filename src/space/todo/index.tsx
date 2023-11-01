@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Step from "./share/components/step";
 import ItemList from "./share/components/itemList";
 import Search from "./share/components/search";
@@ -9,8 +7,6 @@ import AddTool from "./share/components/addTool";
 import style from "./index.module.scss";
 
 export default function Todo() {
-  const [showSteps] = useState<boolean>(!false);
-
   return (
     <div className={style.todo + " full row"}>
       <div className="full_y column br_r">

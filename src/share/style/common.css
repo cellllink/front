@@ -37,3 +37,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.hr:hover {
+  background: rgba(0, 0, 0, 0.06);
+}

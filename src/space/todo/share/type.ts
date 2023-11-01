@@ -1,5 +1,20 @@
-export interface Group {}
+export interface TodoGroup {
+  id: number;
+  icon?: string;
+  title: string;
+}
 
-export interface Item {}
+export interface TodoItem {
+  id: number;
+  scene_uuid: string;
+  group_id?: number;
+  icon?: string;
+  title: string;
+  remark_id?: string;
+  is_finish: boolean;
+  is_important: boolean;
+  add_today_date?: string;
+  create_time: string;
+}
 
-export interface Step {}
+export interface TodoStep {}

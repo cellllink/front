@@ -11,7 +11,7 @@ import { getMenuItem } from "../share/util/antd.util";
 
 import "../share/style/index.scss";
 import style from "./index.module.scss";
-import { Apps } from "@share/config";
+import { Apps, CommonConfig } from "@share/config";
 
 const Defect = loadable(() => import("./defect"));
 const Todo = loadable(() => import("./todo"));
@@ -40,7 +40,7 @@ const Header = () => {
   ];
 
   const out = () => {
-    console.log("已退出");
+    window.location.replace(CommonConfig.oauthDomain as string)
   };
 
   return (

@@ -1,6 +1,8 @@
 export const CommonConfig = {
   apiHost: process.env.REACT_APP_API_HOST || "",
   apiHostPrefix: process.env.REACT_APP_API_HOST_PREFIX || "",
+  
+  oauthDomain: process.env.REACT_APP_OAUTH_DOMAIN,
 
   aliIconfontKeys: ["font_3160388_911x95a6f2u"],
 };

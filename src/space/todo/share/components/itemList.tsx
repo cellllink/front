@@ -58,8 +58,8 @@ function ItemListHeader({ group, setGroup }: ItemListHeaderComponentProp) {
         onOpenChange={setShowPopover}
         content={
           <div className="row row-wp_w cs_p" style={{ maxWidth: "192px" }}>
-            {TodoIcons.map((i) => (
-              <div className="pd_4 hr" onClick={() => onChangeGroupIcon(i)}>
+            {TodoIcons.map((i, index) => (
+              <div className="pd_4 hr" onClick={() => onChangeGroupIcon(i)} key={index}>
                 <IconFont type={"icon-" + i} className="fs_24" />
               </div>
             ))}
@@ -160,7 +160,7 @@ export default function ItemList() {
 
           <Spin spinning={!true}>
             {list.map((item) => (
-              <Item item={item} isActive={activeItemId === item.id} />
+              <Item item={item} isActive={activeItemId === item.id} key={item.id} />
             ))}
           </Spin>
         </>

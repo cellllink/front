@@ -30,6 +30,7 @@ export default function Menu() {
 
     getMenuItem(
       <Input
+        autoFocus
         placeholder="请输入分组名称"
         value={title}
         bordered={false}
@@ -37,8 +38,7 @@ export default function Menu() {
         onChange={(e) => setTitle(e.target.value)}
       />,
       "sub5",
-      <FolderOutlined style={{ fontSize: "16px" }} />,
-      []
+      <FolderOutlined style={{ fontSize: "16px" }} />
     ),
   ];
 
@@ -48,7 +48,38 @@ export default function Menu() {
 
   return (
     <div className="menu flex1 scrollbar__w1">
-      <AntdMenu onClick={onClick} style={{ width: 220, height: "100%" }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
+      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={items} />
     </div>
   );
 }

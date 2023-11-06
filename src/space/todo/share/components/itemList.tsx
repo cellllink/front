@@ -16,16 +16,18 @@ function Item({ item, isActive }: ItemComponentProp) {
   const [isImportant, setIsImportant] = useState<boolean>(item.is_important);
 
   const onChangeIsFinished = () => setIsFinish(!isFinish);
-  const onShowStep = () => currentItemSubject.next(item.id);
+  const onShowStep = () => currentItemSubject.next(item);
   const onChangeIsImportant = () => setIsImportant(!isImportant);
 
   return (
-    <div className={"pd-h_8 row-v_c cs_p br_b hr " + (isActive ? "item--active" : "")}>
-      <Checkbox className="mg-r_8" checked={isFinish} onChange={onChangeIsFinished}></Checkbox>
-      <span className="flex1 pd-v_12" onClick={onShowStep}>
-        {item.title}
-      </span>
-      <IconFont onClick={onChangeIsImportant} type={isImportant ? "icon-star-fill" : "icon-star-line"} className="fs_16" />
+    <div className={"pd-h_8 hr " + (isActive ? "item--active" : "")}>
+      <div className="row-v_c cs_p br_b">
+        <Checkbox className="mg-r_8" checked={isFinish} onChange={onChangeIsFinished}></Checkbox>
+        <span className="flex1 pd-v_12" onClick={onShowStep}>
+          {item.title}
+        </span>
+        <IconFont onClick={onChangeIsImportant} type={isImportant ? "icon-star-fill" : "icon-star-line"} className="fs_16" />
+      </div>
     </div>
   );
 }
@@ -139,13 +141,18 @@ export default function ItemList() {
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
   useEffect(() => {
-    currentGroupSubject.subscribe((currentId) => {
-      if (currentId !== groupId) currentItemSubject.next(null);
-      setGroupId(currentId);
+    currentGroupSubject.subscribe((group) => {
+      if (!group) {
+        setList([]);
+        return;
+      }
+
+      if (group.id !== groupId) currentItemSubject.next(null);
+      setGroupId(group.id);
     });
-    currentItemSubject.subscribe((activeItemId: number | null) => {
-      setActiveItemId(activeItemId);
-    });
+    // currentItemSubject.subscribe((activeItemId: number | null) => {
+    //   setActiveItemId(activeItemId);
+    // });
   }, []);
 
   return (

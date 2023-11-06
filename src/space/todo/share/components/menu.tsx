@@ -3,7 +3,7 @@ import { getMenuItem } from "@share/util/antd.util";
 import { Input, Menu as AntdMenu } from "antd";
 import { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
-import { AddGroupOrListSubject, currentGroupSubject, currentItemSubject } from "../util/signal.util";
+import { AddGroupOrListSubject, currentItemSubject } from "../util/signal.util";
 import { TodoGroup } from "../type";
 
 function Group(group: TodoGroup) {}
@@ -43,7 +43,7 @@ export default function Menu() {
   ];
 
   const onClick: MenuProps["onClick"] = () => {
-    currentGroupSubject.next(Math.floor(Math.random() * 100));
+    // currentGroupSubject.next(Math.floor(Math.random() * 100));
   };
 
   return (

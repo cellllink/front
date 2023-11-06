@@ -17,4 +17,10 @@ export interface TodoItem {
   create_time: string;
 }
 
-export interface TodoStep {}
+export interface TodoStep {
+  id: number;
+  scene_uuid: string;
+  item_id: number;
+  title: string;
+  is_finish: boolean;
+}

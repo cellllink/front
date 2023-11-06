@@ -15,16 +15,17 @@ export function bootstrap(main: React.ReactNode) {
   if (!RootElement) throw new Error('请在 public/index.html 的 body 中添加 <div id="root"></div>');
 
   ReactDOM.createRoot(RootElement).render(
-    <React.StrictMode>
-      <RecoilRoot>
-        <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
-          <App>
-            <HashRouter>
-              <Routes>{main}</Routes>
-            </HashRouter>
-          </App>
-        </ConfigProvider>
-      </RecoilRoot>
-    </React.StrictMode>
+    // 拖住库 暂时不支持严格模式
+    // <React.StrictMode>
+    <RecoilRoot>
+      <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
+        <App>
+          <HashRouter>
+            <Routes>{main}</Routes>
+          </HashRouter>
+        </App>
+      </ConfigProvider>
+    </RecoilRoot>
+    // </React.StrictMode>
   );
 }

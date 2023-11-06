@@ -5,13 +5,14 @@ import loadable from "@loadable/component";
 import { SettingModal } from "./setting.modal";
 import { IconFont } from "../share/component/iconfont";
 import { DownOutlined } from "@ant-design/icons";
+import { Apps, CommonConfig } from "@share/config";
 
 import { Dropdown, Menu, MenuProps } from "antd";
 import { getMenuItem } from "../share/util/antd.util";
 
 import "../share/style/index.scss";
 import style from "./index.module.scss";
-import { Apps, CommonConfig } from "@share/config";
+import "braft-editor/dist/index.css";
 
 const Defect = loadable(() => import("./defect"));
 const Todo = loadable(() => import("./todo"));
@@ -40,7 +41,7 @@ const Header = () => {
   ];
 
   const out = () => {
-    window.location.replace(CommonConfig.oauthDomain as string)
+    window.location.replace(CommonConfig.oauthDomain as string);
   };
 
   return (

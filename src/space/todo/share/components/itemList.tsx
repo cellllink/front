@@ -1,4 +1,4 @@
-import { FolderOutlined } from "@ant-design/icons";
+import { FolderOutlined, PlusOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { Checkbox, Empty, Input, Popover, Spin } from "antd";
 import { IconFont } from "@share/component/iconfont";
@@ -137,6 +137,66 @@ export default function ItemList() {
       add_today_date: undefined,
       create_time: "2023-11-01 12:00:00",
     },
+    {
+      id: 4,
+      scene_uuid: "xxxx",
+      group_id: 1,
+      icon: undefined,
+      title: "安徽看到3",
+      remark_id: undefined,
+      is_finish: true,
+      is_important: false,
+      add_today_date: undefined,
+      create_time: "2023-11-01 12:00:00",
+    },
+    {
+      id: 5,
+      scene_uuid: "xxxx",
+      group_id: 1,
+      icon: undefined,
+      title: "安徽看到3",
+      remark_id: undefined,
+      is_finish: true,
+      is_important: false,
+      add_today_date: undefined,
+      create_time: "2023-11-01 12:00:00",
+    },
+    {
+      id: 6,
+      scene_uuid: "xxxx",
+      group_id: 1,
+      icon: undefined,
+      title: "安徽看到3",
+      remark_id: undefined,
+      is_finish: true,
+      is_important: false,
+      add_today_date: undefined,
+      create_time: "2023-11-01 12:00:00",
+    },
+    {
+      id: 7,
+      scene_uuid: "xxxx",
+      group_id: 1,
+      icon: undefined,
+      title: "安徽看到3",
+      remark_id: undefined,
+      is_finish: true,
+      is_important: false,
+      add_today_date: undefined,
+      create_time: "2023-11-01 12:00:00",
+    },
+    {
+      id: 8,
+      scene_uuid: "xxxx",
+      group_id: 1,
+      icon: undefined,
+      title: "安徽看到3",
+      remark_id: undefined,
+      is_finish: true,
+      is_important: false,
+      add_today_date: undefined,
+      create_time: "2023-11-01 12:00:00",
+    },
   ]);
   const [activeItemId, setActiveItemId] = useState<number | null>(null);
 
@@ -156,22 +216,24 @@ export default function ItemList() {
   }, []);
 
   return (
-    <div className="flex1">
+    <div className="full_y flex1 column">
+      <ItemListHeader group={group} setGroup={setGroup} />
+
       {!list.length ? (
-        <div className="full_y column_c_c">
-          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="快去添加吧" />
+        <div className="flex1 column_c_c">
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="快去添加任务吧" />
         </div>
       ) : (
-        <>
-          <ItemListHeader group={group} setGroup={setGroup} />
-
-          <Spin spinning={!true}>
-            {list.map((item) => (
-              <Item item={item} isActive={activeItemId === item.id} key={item.id} />
-            ))}
-          </Spin>
-        </>
+        <div className="itemlist flex1 scrollbar__w1">
+          {list.map((item) => (
+            <Item item={item} isActive={activeItemId === item.id} key={item.id} />
+          ))}
+        </div>
       )}
+
+      <div className="pd-h_8 pd-v_4 br_t">
+        <Input placeholder="添加任务" prefix={<PlusOutlined />} />
+      </div>
     </div>
   );
 }

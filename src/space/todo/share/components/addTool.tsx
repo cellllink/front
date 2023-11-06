@@ -8,13 +8,13 @@ export default function AddTool() {
   return (
     <div className="row_c_sb pd_8 br_t cs_p">
       <div className="row-v_c flex1" onClick={() => onAdd("list")}>
-        <PlusCircleOutlined className="fs_20" />
-        <span className="mg-l_8 fs_16 lh_24">新建列表</span>
+        <PlusCircleOutlined className="fs_18" />
+        <span className="mg-l_8 fs_14 lh_24">新建列表</span>
       </div>
 
       <Divider type="vertical" />
 
-      <FolderAddOutlined className="fs_22" onClick={() => onAdd("group")} />
+      <FolderAddOutlined className="fs_20" onClick={() => onAdd("group")} />
     </div>
   );
 }

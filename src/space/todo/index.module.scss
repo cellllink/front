@@ -6,10 +6,32 @@
       overflow-y: auto;
     }
 
+    .itemlist {
+      // 48px + 41px
+      max-height: calc(100% - 82px);
+      overflow-y: auto;
+    }
+
     .item {
       &--active {
         background: rgba(0, 0, 0, 0.06);
       }
+    }
+
+    .step-container {
+      max-height: calc(100%);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .bf-content  {
+      height: auto;
+    }
+    .bf-controlbar {
+      padding: 0 4px;
+    }
+    .public-DraftEditor-content {
+      padding: 8px;
     }
 
     .steps {

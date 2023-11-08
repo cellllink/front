@@ -1,0 +1,13 @@
+.defect {
+  :global {
+    .filter {
+      &-label {
+        width: 72px;
+        text-align: right;
+      }
+      &-ranger-picker {
+        width: 320px;
+      }
+    }
+  }
+}

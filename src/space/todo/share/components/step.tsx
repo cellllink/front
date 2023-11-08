@@ -108,7 +108,7 @@ export default function Step() {
           <CloseOutlined onClick={onClose} />
         </div>
 
-        <div className="step-container scrollbar__w1">
+        <div className="step-container column scrollbar__w1">
           <Spin spinning={loading}>
             {/* onDragStart={(e) => onDragStart(e)} onDragUpdate={(e) => onDragUpdate(e)}  */}
             <DragDropContext onDragEnd={(e) => onDragEnd(e)}>
@@ -145,14 +145,16 @@ export default function Step() {
                 <span className="mg-l_8">添加附件</span>
               </div>
             </div>
-
-            <div className="mg-t_8 br_t">
-              <BraftEditor value={editorState} controls={controls} />
-            </div>
           </Spin>
+
+          <div className="mg-t_8 br_t flex1">
+            <BraftEditor value={editorState} controls={controls} />
+          </div>
         </div>
 
-        <div className="pd-v_8 ta_c br_t">创建时间 2023-08-20 17:14:30</div>
+        <div className="pd-v_8 ta_c br_t" style={{ height: "48px" }}>
+          创建时间 2023-08-20 17:14:30
+        </div>
       </div>
     </div>
   );

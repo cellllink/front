@@ -1,14 +1,14 @@
 .todo {
   :global {
     .menu {
-      // 48px + 41px
-      max-height: calc(100% - 82px);
+      // 40px + 48px
+      height: calc(100% - 88px);
       overflow-y: auto;
     }
 
     .itemlist {
-      // 48px + 41px
-      max-height: calc(100% - 82px);
+      // 40px + 48px
+      height: calc(100% - 88px);
       overflow-y: auto;
     }
 
@@ -19,17 +19,20 @@
     }
 
     .step-container {
-      max-height: calc(100%);
+      // 41px + 48px
+      height: calc(100% - 89px);
+      min-height: 600px;
       overflow-y: auto;
       overflow-x: hidden;
     }
 
-    .bf-content  {
-      height: auto;
-    }
     .bf-controlbar {
       padding: 0 4px;
     }
+    .bf-content {
+      height: calc(100% - 46px);
+    }
+    
     .public-DraftEditor-content {
       padding: 8px;
     }

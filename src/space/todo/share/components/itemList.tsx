@@ -219,7 +219,7 @@ export default function ItemList() {
     <div className="full_y flex1 column">
       <ItemListHeader group={group} setGroup={setGroup} />
 
-      {!list.length ? (
+      {list.length ? (
         <div className="flex1 column_c_c">
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="快去添加任务吧" />
         </div>
@@ -231,7 +231,7 @@ export default function ItemList() {
         </div>
       )}
 
-      <div className="pd-h_8 pd-v_4 br_t">
+      <div className="pd_8 br_t" style={{ height: "48px" }}>
         <Input placeholder="添加任务" prefix={<PlusOutlined />} />
       </div>
     </div>

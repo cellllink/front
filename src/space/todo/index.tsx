@@ -1,8 +1,8 @@
-import Step from "./share/components/step";
-import ItemList from "./share/components/itemList";
-import Search from "./share/components/search";
-import Menu from "./share/components/menu";
-import AddTool from "./share/components/addTool";
+import Step from "./share/component/step";
+import ItemList from "./share/component/itemList";
+import Search from "./share/component/search";
+import Menu from "./share/component/menu";
+import AddTool from "./share/component/addTool";
 
 import style from "./index.module.scss";
 

@@ -1,14 +1,15 @@
 import { DoubleRightOutlined, DoubleLeftOutlined, SettingOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+import View from "./share/component/view";
 
 import style from "./index.module.scss";
-import { Button } from "antd";
 
 export default function Defect() {
   return (
     <div className={style.defect + " full"}>
       <div className="row br_b">
         <div style={{ width: "160px" }}>
-          <div className="mg-v_81 br_r">
+          <div className="mg-v_81 pd_8 lh_32 br_r">
             123
             <DoubleRightOutlined />
             {/* <DoubleLeftOutlined /> */}
@@ -67,9 +68,7 @@ export default function Defect() {
       </div>
 
       <div className="full_y row">
-        <div className="br_r" style={{ width: "160px" }}>
-          left
-        </div>
+        <View></View>
         <div>right</div>
       </div>
     </div>

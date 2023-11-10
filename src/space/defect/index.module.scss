@@ -9,5 +9,11 @@
         width: 320px;
       }
     }
+
+    .view {
+      &-list {
+        height: calc(100% - 97px);
+      }
+    }
   }
 }

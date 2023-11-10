@@ -1,32 +1,51 @@
-import { DatePicker, Select, Space } from "antd";
+import { DoubleRightOutlined, DoubleLeftOutlined, SettingOutlined } from "@ant-design/icons";
 
 import style from "./index.module.scss";
-
-const options = [{ value: "lucy", label: "Lucy" }];
+import { Button } from "antd";
 
 export default function Defect() {
   return (
     <div className={style.defect + " full"}>
-      <div className="row pd_8 br_b">
-        <div style={{ width: "160px" }}>123</div>
+      <div className="row br_b">
+        <div style={{ width: "160px" }}>
+          <div className="mg-v_81 br_r">
+            123
+            <DoubleRightOutlined />
+            {/* <DoubleLeftOutlined /> */}
+          </div>
+        </div>
 
-        <div className="flex1">
-          <Space>
-            <div className="row-v_c">
+        <div className="flex1 row_c_sb pd_8">
+          <div className="row-v_c">
+            <SettingOutlined className="fs_20" />
+            <span className="mg-l_8">严重程度：严重</span>
+          </div>
+          <div>
+            <Button type="primary">创建缺陷</Button>
+          </div>
+        </div>
+
+        {/* <div className="flex1 row-h_sb">
+          <div className="row row-wp_w">
+            <div className="row-v_c pd-t_8">
               <p className="filter-label">处理人：</p>
               <Select defaultValue="lucy" style={{ width: 120 }} options={options} />
             </div>
-            <div className="row-v_c">
+            <div className="row-v_c pd-t_8">
               <p className="filter-label">状态：</p>
               <Select defaultValue="lucy" style={{ width: 120 }} options={options} />
             </div>
-            <div className="row-v_c">
+            <div className="row-v_c pd-t_8">
               <p className="filter-label">创建时间：</p>
               <DatePicker.RangePicker className="filter-ranger-picker" />
             </div>
-          </Space>
+          </div>
 
-          <Space className="mg-t_8">
+          <div className="pd-h_8 pd-t_8">
+            <Button type="primary">确定</Button>
+          </div>
+
+          <Space>
             <div className="row-v_c">
               <p className="filter-label">优先级：</p>
               <Select defaultValue="lucy" style={{ width: 120 }} options={options} />
@@ -44,7 +63,7 @@ export default function Defect() {
               <Select defaultValue="lucy" style={{ width: 120 }} options={options} />
             </div>
           </Space>
-        </div>
+        </div> */}
       </div>
 
       <div className="full_y row">

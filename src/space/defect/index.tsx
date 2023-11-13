@@ -1,32 +1,44 @@
-import { DoubleRightOutlined, DoubleLeftOutlined, SettingOutlined } from "@ant-design/icons";
+import { SettingOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import View from "./share/component/view";
+import { AddDefectModal } from "./share/component/addDefectModal";
 
 import style from "./index.module.scss";
+import { useState } from "react";
+import { DefectList } from "./share/component/defectList";
 
 export default function Defect() {
+  const [showAddModal, setShowAddModal] = useState<boolean>(false);
+
+  const onOpenAddModal = () => {
+    setShowAddModal(true);
+  };
+
+  const onClsoeAddModal = () => {
+    setShowAddModal(false);
+  };
+
   return (
-    <div className={style.defect + " full"}>
-      <div className="row br_b">
-        <div style={{ width: "160px" }}>
-          <div className="mg-v_81 pd_8 lh_32 br_r">
-            123
-            <DoubleRightOutlined />
-            {/* <DoubleLeftOutlined /> */}
+    <>
+      <div className={style.defect + " full"}>
+        <div className="row br_b">
+          <div style={{ width: "160px" }}>
+            <div className="mg-v_81 pd_8 lh_32 br_r">123</div>
           </div>
-        </div>
 
-        <div className="flex1 row_c_sb pd_8">
-          <div className="row-v_c">
-            <SettingOutlined className="fs_20" />
-            <span className="mg-l_8">严重程度：严重</span>
+          <div className="flex1 row_c_sb pd_8 cs_p">
+            <div className="row-v_c">
+              <SettingOutlined className="fs_20" />
+              <span className="mg-l_8">严重程度：严重</span>
+            </div>
+            <div>
+              <Button type="primary" onClick={onOpenAddModal}>
+                创建缺陷
+              </Button>
+            </div>
           </div>
-          <div>
-            <Button type="primary">创建缺陷</Button>
-          </div>
-        </div>
 
-        {/* <div className="flex1 row-h_sb">
+          {/* <div className="flex1 row-h_sb">
           <div className="row row-wp_w">
             <div className="row-v_c pd-t_8">
               <p className="filter-label">处理人：</p>
@@ -65,12 +77,15 @@ export default function Defect() {
             </div>
           </Space>
         </div> */}
+        </div>
+
+        <div className="full_y row">
+          <View></View>
+          <DefectList />
+        </div>
       </div>
 
-      <div className="full_y row">
-        <View></View>
-        <div>right</div>
-      </div>
-    </div>
+      <AddDefectModal show={showAddModal} close={onClsoeAddModal} />
+    </>
   );
 }

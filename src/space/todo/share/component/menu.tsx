@@ -6,6 +6,22 @@ import type { MenuProps } from "antd";
 import { AddGroupOrListSubject, currentItemSubject } from "../util/signal.util";
 import { TodoGroup } from "../type";
 import { ItemType } from "antd/lib/menu/hooks/useItems";
+import { todoGroupHttpService } from "@share/http/api/todo.http.service";
+import { BsTodoGroupPo } from "@share/http/po/bs.todo.po";
+
+function orderMenu(list: BsTodoGroupPo[]) {
+  const groups = list.filter((i) => !i.catalogue_id);
+  groups.forEach((group) => {
+    const listOfGroup = list.filter((i) => i.catalogue_id === group.id);
+    let HEAD = listOfGroup.find((i) => !i.order_prev_id);
+    group.children = [];
+    while (!!HEAD) {
+      group.children.push(HEAD);
+      HEAD = listOfGroup.find((i) => i.order_prev_id === HEAD!.id);
+    }
+  });
+  return groups;
+}
 
 function Group(group: TodoGroup) {}
 
@@ -44,28 +60,40 @@ function WillAdd({ type }: WillAddProp) {
 }
 
 export default function Menu() {
-  const [menuList, setMenuList] = useState<ItemType[]>([
-    getMenuItem("Navigation One", "sub1", <FolderOutlined style={{ fontSize: "16px" }} />, [
-      getMenuItem("Option 1", "1", <UnorderedListOutlined style={{ fontSize: "16px" }} />),
-      getMenuItem("Option 2", "2"),
-      getMenuItem("Option 3", "3"),
-      getMenuItem("Option 4", "4"),
-    ]),
-  ]);
+  const [menuList, setMenuList] = useState<ItemType[]>([]);
 
   useEffect(() => {
+    todoGroupHttpService
+      .list({
+        scene_uuid: "test",
+      })
+      .subscribe((list) => {
+        setMenuList(
+          orderMenu(list).map((group) => {
+            return getMenuItem(
+              group.title,
+              group.id,
+              <FolderOutlined style={{ fontSize: "16px" }} />,
+              group.children.length === 0
+                ? undefined
+                : group.children.map((list) => getMenuItem(list.title, list.id, <UnorderedListOutlined style={{ fontSize: "16px" }} />))
+            );
+          })
+        );
+      });
     const Subscription = AddGroupOrListSubject.subscribe((type: "group" | "list") => {
-      console.log(type);
+      todoGroupHttpService.add({});
 
       setMenuList([
         ...menuList,
         getMenuItem(
           <WillAdd type={type} />,
-          type === "list" ? "xxxxxx" : "aaaaaa",
+          type === "list" ? "新列表" : "新分组",
           type === "list" ? <UnorderedListOutlined style={{ fontSize: "16px" }} /> : <FolderOutlined style={{ fontSize: "16px" }} />
         ),
       ]);
     });
+
     return () => Subscription.unsubscribe();
   }, []);
 

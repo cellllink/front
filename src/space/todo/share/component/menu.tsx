@@ -97,15 +97,15 @@ export default function Menu() {
     return () => Subscription.unsubscribe();
   }, []);
 
-  const onClick: MenuProps["onClick"] = () => {
-    console.log("asdas");
+  const onSelect: MenuProps["onSelect"] = (a) => {
+    console.log(a);
 
     // currentGroupSubject.next(Math.floor(Math.random() * 100));
   };
 
   return (
     <div className="menu flex1 scrollbar__w1">
-      <AntdMenu onClick={onClick} style={{ width: 220 }} mode="inline" items={menuList} />
+      <AntdMenu onSelect={onSelect} style={{ width: 220 }} mode="inline" items={menuList} />
     </div>
   );
 }

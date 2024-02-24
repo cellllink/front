@@ -1,37 +1,45 @@
-import { Table } from "antd";
+import { Button, Space, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-
-interface DataType {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-  tags: string[];
-}
+import { Defect } from "../type";
 
 export function DefectList() {
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<Defect> = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
+      title: "标题",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "操作",
+      key: "action",
+      render: (_, record) => (
+        <Space>
+          {/* <a>Invite {record.name}</a> */}
+          <a>删除</a>
+        </Space>
+      ),
     },
   ];
 
-  const data: DataType[] = [
+  const data: Defect[] = [
     {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
+      title: "阿斯达克",
+      priority: 1,
+      severity: 1,
+      group_id: 1,
+      tag_id: 1,
+      status: 1,
+      create_time: "2023-11-01 10:45:30",
+      update_time: "2023-11-01 10:45:30",
+      deadline: "2023-11-01 10:45:30",
+      owner_id: 1,
+      deal_user_id: 1,
     },
   ];
 
   return (
     <div className="flex1">
-      <Table columns={columns} dataSource={data} size="small" />
+      <Table dataSource={data} pagination={{ pageSize: 20 }} size="small"></Table>
     </div>
   );
 }

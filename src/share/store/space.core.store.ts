@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { Organization, User } from "../type/core.type";
+import { CoUserPo, CoOrganizationPo } from "../http/po/core.po";
 
 interface CoreState {
-  user: null | User; // 当前登陆用户信息
-  organization: null | Organization; // 当前登陆用户 选择的组织
-  userOrganizations: Organization[]; // 当前登陆用户 已加入的组织列表
+  user: null | CoUserPo; // 当前登陆用户信息
+  organization: null | CoOrganizationPo; // 当前登陆用户 选择的组织
+  userOrganizations: CoOrganizationPo[]; // 当前登陆用户 已加入的组织列表
 }
 interface CoreMutation {
   reset: () => void;

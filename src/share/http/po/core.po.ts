@@ -7,3 +7,5 @@ export interface CoUserPo {
   register_time: Date;
   update_time: Date;
 }
+
+export interface CoOrganizationPo {}

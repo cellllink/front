@@ -1,5 +1,5 @@
 import { createFromIconfontCN } from "@ant-design/icons";
-import { CommonConfig } from "@share/config";
+import { CommonConfig } from "@share/config/common.config";
 
 export const IconFont = createFromIconfontCN({
   scriptUrl: CommonConfig.aliIconfontKeys.map((key) => `//at.alicdn.com/t/c/${key}.js`),

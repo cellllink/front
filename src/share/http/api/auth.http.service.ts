@@ -1,5 +1,5 @@
 import { ApiBaseHttpService, Params } from "../base.http.service";
-import { LoginVo } from "../vo/api.auth.vo";
+import { CoUserPo } from "../po/core.po";
 
 class AuthHttpService extends ApiBaseHttpService {
   protected modulePrefix = "/auth"; // 模块前缀
@@ -10,3 +10,8 @@ class AuthHttpService extends ApiBaseHttpService {
 }
 
 export const authHttpService = new AuthHttpService();
+
+export interface LoginVo {
+  user: CoUserPo;
+  token: string;
+}

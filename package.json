@@ -34,7 +34,8 @@
     "start::space": "craco start --project=space --port=4000",
     "start::manage": "craco start --project=manage --port=5000",
     "start::website": "craco start --project=website --port=6000",
-    "build": "craco build"
+    "build": "craco build",
+    "push": "git add . && git commit -m 1 && git push"
   },
   "eslintConfig": {
     "extends": [

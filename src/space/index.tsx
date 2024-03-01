@@ -5,7 +5,8 @@ import loadable from "@loadable/component";
 import { SettingModal } from "./setting.modal";
 import { IconFont } from "../share/component/iconfont";
 import { DownOutlined } from "@ant-design/icons";
-import { Apps, CommonConfig } from "@share/config";
+import { EnvConfig } from "@share/config/env.config";
+import { Apps } from "@share/config/space.config";
 
 import { Dropdown, Menu, MenuProps } from "antd";
 import { getMenuItem } from "../share/util/antd.util";
@@ -41,7 +42,7 @@ const Header = () => {
   ];
 
   const out = () => {
-    window.location.replace(CommonConfig.oauthDomain as string);
+    window.location.replace(EnvConfig.oauthDomain as string);
   };
 
   return (
@@ -113,7 +114,7 @@ const App = () => (
   </Routes>
 );
 
-export function Index() {
+function Index() {
   return (
     <div className={style.layout}>
       <div className="header br_b">

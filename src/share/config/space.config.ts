@@ -1,26 +1,3 @@
-export const CommonConfig = {
-  apiHost: process.env.REACT_APP_API_HOST || "",
-  apiHostPrefix: process.env.REACT_APP_API_HOST_PREFIX || "",
-  
-  oauthDomain: process.env.REACT_APP_OAUTH_DOMAIN,
-
-  aliIconfontKeys: ["font_3160388_911x95a6f2u"],
-};
-
-export const OAuthConfig = {};
-
-export const WebsiteConfig = {};
-
-export const SpaceConfig = {
-  apiHost: process.env.REACT_APP_SPACE_API_HOST,
-};
-
-export const ManageConfig = {};
-
-export const ConfigProviderTheme = {
-  components: {},
-};
-
 export const Apps = [
   {
     to: "organization",

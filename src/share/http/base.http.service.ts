@@ -1,5 +1,6 @@
-import { CommonConfig } from "@share/config";
-import { map, Observable } from "rxjs";
+import { EnvConfig } from "@share/config/env.config";
+import { message } from "antd";
+import { catchError, map, Observable } from "rxjs";
 import { ajax, AjaxResponse } from "rxjs/ajax";
 
 export type Params = Record<string, any>;
@@ -24,6 +25,7 @@ export interface QueryData<Data> {
 }
 
 interface HttpOption {
+  showErrorMessage?: boolean;
   headers?: Record<string, any>;
 }
 
@@ -33,8 +35,13 @@ export class BaseHttpService {
   protected modulePrefix = ""; // 模块前缀
 
   private defaultHttpOption: HttpOption = {
+    showErrorMessage: true,
     headers: {},
   };
+
+  get baseUrl(): string {
+    return this.host + this.hostPrefix + this.modulePrefix;
+  }
 
   constructor(host: string, hostPrefix: string) {
     this.host = host;
@@ -42,17 +49,32 @@ export class BaseHttpService {
   }
 
   private successHandle<T>({ response }: AjaxResponse<IResponse<T>>, httpOption: HttpOption = {}): T {
-    if (response.code !== 200) throw response.message;
+    if (response.code !== 200) {
+      httpOption.showErrorMessage && message.error(response.message);
+      throw response.message;
+    }
     return response.data;
   }
 
+  public get<T>(url: string, queryParams: QueryParams, httpOption: HttpOption = {}): Observable<T> {
+    const { pageNumber, pageSize, params } = queryParams;
+    const { headers } = Object.assign({}, this.defaultHttpOption, httpOption);
+
+    return ajax<IResponse<T>>({
+      method: "GET",
+      url: this.baseUrl + url,
+      headers,
+      queryParams: { pageNumber, pageSize, ...params },
+    }).pipe(map((res) => this.successHandle(res, httpOption)));
+  }
+
   public post<T>(url: string, body: Params, httpOption: HttpOption = {}): Observable<T> {
-    httpOption = Object.assign({}, this.defaultHttpOption, httpOption);
+    const { headers } = Object.assign({}, this.defaultHttpOption, httpOption);
 
     return ajax<IResponse<T>>({
       method: "POST",
-      url: this.host + this.hostPrefix + this.modulePrefix + url,
-      headers: httpOption.headers,
+      url: this.baseUrl + url,
+      headers,
       body,
     }).pipe(map((res) => this.successHandle(res, httpOption)));
   }
@@ -68,6 +90,6 @@ export class BaseHttpService {
 
 export class ApiBaseHttpService extends BaseHttpService {
   constructor() {
-    super(CommonConfig.apiHost, CommonConfig.apiHostPrefix);
+    super(EnvConfig.apiHost, EnvConfig.apiHostPrefix);
   }
 }

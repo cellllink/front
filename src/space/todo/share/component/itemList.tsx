@@ -4,7 +4,7 @@ import { Checkbox, Empty, Input, Popover, Spin } from "antd";
 import { IconFont } from "@share/component/iconfont";
 import { currentGroupSubject, currentItemSubject } from "../util/signal.util";
 import { TodoGroup, TodoItem } from "../type";
-import { TodoIcons } from "@share/config";
+import { TodoIcons } from "@share/config/space.config";
 
 interface ItemComponentProp {
   item: TodoItem;

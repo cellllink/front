@@ -6,4 +6,6 @@ export const EnvConfig = {
   spaceDomain: process.env.REACT_APP_SPACE_DOMAIN,
   manageDomain: process.env.REACT_APP_MANAGE_DOMAIN,
   websiteDomain: process.env.REACT_APP_WEBSITE_DOMAIN,
+
+  githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID,
 };

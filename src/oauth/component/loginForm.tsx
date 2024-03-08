@@ -38,7 +38,7 @@ export const LoginForm: React.FC = () => {
           <Input placeholder="请输入账号" prefix={<UserOutlined />} size="large" />
         </Form.Item>
         <Form.Item name="password" rules={[{ required: true, message: "请输入密码" }]}>
-          <Input placeholder="请输入密码" prefix={<LockOutlined />} size="large" />
+          <Input.Password placeholder="请输入密码" prefix={<LockOutlined />} size="large" />
         </Form.Item>
 
         <Button type="primary" htmlType="submit" block size="large" loading={loading}>

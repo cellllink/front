@@ -1,16 +1,18 @@
 import { IconFont } from "@share/component/iconfont";
+import { EnvConfig } from "@share/config/env.config";
 import { Button } from "antd";
 import { Link, useLocation } from "react-router-dom";
 
 export const Tripartite: React.FC = () => {
-  // function goToGithubAuth() {
-  //   window.location.replace("https://github.com/login/oauth/authorize?client_id=00cf9188747a42a063ee");
-  // }
+  function goToGithubAuth() {
+    window.location.replace(
+      `https://github.com/login/oauth/authorize?client_id=${EnvConfig.githubClientId}&redirect_uri=${EnvConfig.oauthDomain}/#/auth/github`
+    );
+  }
 
   let location = useLocation();
 
   const test = () => {};
-  const goToGithubAuth = () => {};
 
   return (
     <div className="row_c_sb mg-t_16">

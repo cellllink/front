@@ -1,13 +1,16 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { bootstrap } from "../share/bootstrap";
+import queryString from "query-string";
 
 import { Board } from "./component/board";
 import { LoginForm } from "./component/loginForm";
 import { RegisterForm } from "./component/registerForm";
 import { Tripartite } from "./component/tripartite";
+import { message } from "antd";
 
 import "../share/style/index.scss";
 import style from "./index.module.scss";
+import { useEffect } from "react";
 
 const Index: React.FC = () => {
   return (
@@ -29,4 +32,27 @@ const Index: React.FC = () => {
   );
 };
 
-bootstrap(<Route path="/*" element={<Index />} />);
+const AuthGithub: React.FC = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const { code } = queryString.parse(window.location.search);
+
+  useEffect(() => {
+    if (!code) messageApi.error("code不存在，授权失败！");
+  }, []);
+
+  return (
+    <>
+      {contextHolder}
+
+      <div>github</div>
+    </>
+  );
+};
+
+bootstrap(
+  <>
+    <Route path="/auth/github" element={<AuthGithub />} />
+    <Route path="/*" element={<Index />} />
+  </>
+);

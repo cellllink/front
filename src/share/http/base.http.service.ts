@@ -1,6 +1,6 @@
 import { EnvConfig } from "@share/config/env.config";
 import { message } from "antd";
-import { catchError, map, Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { ajax, AjaxResponse } from "rxjs/ajax";
 
 export type Params = Record<string, any>;
@@ -50,7 +50,7 @@ export class BaseHttpService {
 
   private successHandle<T>({ response }: AjaxResponse<IResponse<T>>, httpOption: HttpOption = {}): T {
     if (response.code !== 200) {
-      httpOption.showErrorMessage && message.error(response.message);
+      // httpOption.showErrorMessage && message.error(response.message);
       throw response.message;
     }
     return response.data;
@@ -58,7 +58,7 @@ export class BaseHttpService {
 
   public get<T>(url: string, queryParams: QueryParams, httpOption: HttpOption = {}): Observable<T> {
     const { pageNumber, pageSize, params } = queryParams;
-    const { headers } = Object.assign({}, this.defaultHttpOption, httpOption);
+    const { headers } = Object.assign(httpOption, this.defaultHttpOption);
 
     return ajax<IResponse<T>>({
       method: "GET",
@@ -69,7 +69,7 @@ export class BaseHttpService {
   }
 
   public post<T>(url: string, body: Params, httpOption: HttpOption = {}): Observable<T> {
-    const { headers } = Object.assign({}, this.defaultHttpOption, httpOption);
+    const { headers } = Object.assign(httpOption, this.defaultHttpOption);
 
     return ajax<IResponse<T>>({
       method: "POST",

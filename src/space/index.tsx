@@ -37,6 +37,7 @@ const Header = () => {
     {
       key: "logout",
       label: "退出",
+      danger: true,
       onClick: () => out(),
     },
   ];

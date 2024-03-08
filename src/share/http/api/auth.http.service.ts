@@ -7,9 +7,13 @@ class AuthHttpService extends ApiBaseHttpService {
   login(params: Params) {
     return this.post<LoginVo>("/login", params);
   }
+
+  register(params: Params) {
+    return this.post<LoginVo>("/register", params);
+  }
 }
 
-export const authHttpService = new AuthHttpService();
+export const useAuthHttpService = () => new AuthHttpService();
 
 export interface LoginVo {
   user: CoUserPo;

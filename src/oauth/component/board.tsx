@@ -10,7 +10,7 @@ export function Board() {
         <span className="mg-l_8 fs_24">Cellink</span>
       </div>
 
-      <img src={EnvConfig.imageBaseUrl + "oauth/signal.svg"} width={280} alt="" />
+      <img src={EnvConfig.imageBaseUrl + "/image/oauth/signal.svg"} width={280} alt="" />
 
       <div className="mg-t_24 op_6">
         <div className="row-v_c">

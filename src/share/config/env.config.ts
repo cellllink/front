@@ -8,4 +8,5 @@ export const EnvConfig = {
   websiteDomain: process.env.REACT_APP_WEBSITE_DOMAIN,
 
   githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID,
+  imageBaseUrl: process.env.REACT_APP_IMAGE_BASE_URL,
 };

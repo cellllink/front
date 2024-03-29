@@ -6,6 +6,7 @@ import { Params } from "@share/http/base.http.service";
 import { finalize } from "rxjs";
 import { EnvConfig } from "@share/config/env.config";
 import { message } from "antd";
+import Cookies from "js-cookie";
 
 export const LoginForm: React.FC = () => {
   const [loginForm] = Form.useForm();
@@ -14,19 +15,23 @@ export const LoginForm: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onLogin = (value: Params) => {
-    if (loading) return;
-    setLoading(true);
+    authHttpService.test().subscribe();
+    return;
 
-    authHttpService
-      .login(value)
-      .pipe(finalize(() => setLoading(false)))
-      .subscribe({
-        next: (data) => {
-          messageApi.success("登录成功");
-          window.location.replace(EnvConfig.spaceDomain as string);
-        },
-        error: (errMsg: string) => messageApi.error(errMsg),
-      });
+    // if (loading) return;
+    // setLoading(true);
+
+    // authHttpService
+    //   .login(value)
+    //   .pipe(finalize(() => setLoading(false)))
+    //   .subscribe({
+    //     next: ({ token }) => {
+    //       messageApi.success("登录成功");
+    //       Cookies.set("token", token);
+    //       window.location.replace(EnvConfig.spaceDomain as string);
+    //     },
+    //     error: (errMsg: string) => messageApi.error(errMsg),
+    //   });
   };
 
   return (

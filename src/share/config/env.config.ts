@@ -10,3 +10,5 @@ export const EnvConfig = {
   githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID,
   imageBaseUrl: process.env.REACT_APP_IMAGE_BASE_URL,
 };
+
+console.info(EnvConfig);

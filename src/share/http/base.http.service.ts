@@ -1,5 +1,4 @@
 import { EnvConfig } from "@share/config/env.config";
-import { message } from "antd";
 import { map, Observable } from "rxjs";
 import { ajax, AjaxResponse } from "rxjs/ajax";
 
@@ -36,7 +35,10 @@ export class BaseHttpService {
 
   private defaultHttpOption: HttpOption = {
     showErrorMessage: true,
-    headers: {},
+    headers: {
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE3MTE2OTI5MDEsImV4cCI6MTcxMTc3OTMwMX0.zHXALdUkM-355YvqrmAfE3hXSdz1MIMqKd5voDw5Sj8",
+    },
   };
 
   get baseUrl(): string {
@@ -45,7 +47,7 @@ export class BaseHttpService {
 
   constructor(host: string, hostPrefix: string) {
     this.host = host;
-    this.hostPrefix = hostPrefix;
+    if (hostPrefix) this.hostPrefix = hostPrefix;
   }
 
   private successHandle<T>({ response }: AjaxResponse<IResponse<T>>, httpOption: HttpOption = {}): T {
@@ -68,7 +70,7 @@ export class BaseHttpService {
     }).pipe(map((res) => this.successHandle(res, httpOption)));
   }
 
-  public post<T>(url: string, body: Params, httpOption: HttpOption = {}): Observable<T> {
+  public post<T>(url: string, body: Params = {}, httpOption: HttpOption = {}): Observable<T> {
     const { headers } = Object.assign(httpOption, this.defaultHttpOption);
 
     return ajax<IResponse<T>>({

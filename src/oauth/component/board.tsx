@@ -7,7 +7,7 @@ export function Board() {
     <div>
       <div className="row-v_c mg-b_8">
         <IconFont type="icon-cell" className="fs_32" />
-        <span className="mg-l_8 fs_24">Cellink</span>
+        <span className="mg-l_8 fs_24">Celllink</span>
       </div>
 
       <img src={EnvConfig.imageBaseUrl + "/image/oauth/signal.svg"} width={280} alt="" />

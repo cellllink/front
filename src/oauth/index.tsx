@@ -12,6 +12,8 @@ import "../share/style/index.scss";
 import style from "./index.module.scss";
 import { useEffect } from "react";
 
+// declare var Cookies: any;
+
 const Index: React.FC = () => {
   return (
     <div className={"row_c_c " + style.page}>

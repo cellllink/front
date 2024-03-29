@@ -3,6 +3,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { useAuthHttpService } from "@share/http/api/auth.http.service";
 import { useNavigate } from "react-router-dom";
+import { finalize } from "rxjs";
 
 export const RegisterForm: React.FC = () => {
   const [loginForm] = Form.useForm();
@@ -15,13 +16,16 @@ export const RegisterForm: React.FC = () => {
     if (loading) return;
     setLoading(true);
 
-    authHttpService.register(value).subscribe({
-      next: () => {
-        messageApi.success("注册成功");
-        navigate("/");
-      },
-      error: () => {},
-    });
+    authHttpService
+      .register(value)
+      .pipe(finalize(() => setLoading(false)))
+      .subscribe({
+        next: () => {
+          messageApi.success("注册成功");
+          navigate("/");
+        },
+        error: (errMsg: string) => messageApi.error(errMsg),
+      });
   }
 
   return (

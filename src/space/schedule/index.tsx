@@ -1,5 +1,11 @@
-import { Calendar, CalendarProps, Select } from "antd";
+import { Button, Calendar, CalendarProps, Select } from "antd";
 import { Dayjs } from "dayjs";
+
+// const monthCellRender: React.FC = (value: Dayjs) => {
+//   return 'monthCellRender';
+// }
+
+// const Header: React.FC = () => {};
 
 export default function Schedule() {
   const monthCellRender = (value: Dayjs) => {
@@ -23,37 +29,39 @@ export default function Schedule() {
           const year = value.year();
           const month = value.month();
 
-          console.log(year);
-
           return (
-            <div className="mg-b_8">
-              <Select
-                className="mg-r_8"
-                value={year}
-                onChange={(newYear) => {
-                  const now = value.clone().year(newYear);
-                  onChange(now);
-                }}
-              >
-                {new Array(20).fill(20).map((_, index) => (
-                  <Select.Option key={index} value={year + index}>
-                    {index}年
-                  </Select.Option>
-                ))}
-              </Select>
-              <Select
-                value={month}
-                onChange={(newMonth) => {
-                  const now = value.clone().month(newMonth);
-                  onChange(now);
-                }}
-              >
-                {new Array(12).fill(0).map((_, index) => (
-                  <Select.Option key={index} value={index}>
-                    {index + 1}月
-                  </Select.Option>
-                ))}
-              </Select>
+            <div className="row-h_sb mg-b_16 pd-b_8 br_b">
+              <div>
+                <Select
+                  className="mg-r_8"
+                  value={year}
+                  onChange={(newYear) => {
+                    const now = value.clone().year(newYear);
+                    onChange(now);
+                  }}
+                >
+                  {new Array(5).fill(20).map((_, index) => (
+                    <Select.Option key={index} value={year + index - 2}>
+                      {year + index - 2}年
+                    </Select.Option>
+                  ))}
+                </Select>
+                <Select
+                  value={month}
+                  onChange={(newMonth) => {
+                    const now = value.clone().month(newMonth);
+                    onChange(now);
+                  }}
+                >
+                  {new Array(12).fill(0).map((_, index) => (
+                    <Select.Option key={index} value={index}>
+                      {index + 1}月
+                    </Select.Option>
+                  ))}
+                </Select>
+              </div>
+
+              <Button type="primary">新建日程</Button>
             </div>
           );
         }}

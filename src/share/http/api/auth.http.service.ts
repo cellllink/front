@@ -1,21 +1,25 @@
 import { ApiBaseHttpService, Params } from "../base.http.service";
-import { CoUserPo } from "../po/core.po";
+// import { CoUserPo } from "../po/core.po";
 
 class AuthHttpService extends ApiBaseHttpService {
-  protected modulePrefix = "/auth"; // 模块前缀
+  protected modulePrefix = "/oauth"; // 模块前缀
 
   login(params: Params) {
     return this.post<LoginVo>("/login", params);
   }
 
   register(params: Params) {
-    return this.post<LoginVo>("/register", params);
+    return this.post<LoginVo>("/login/register", params);
+  }
+
+  test() {
+    return this.post<null>("/login/test");
   }
 }
 
 export const useAuthHttpService = () => new AuthHttpService();
 
 export interface LoginVo {
-  user: CoUserPo;
+  // user: CoUserPo;
   token: string;
 }

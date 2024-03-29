@@ -91,7 +91,7 @@ const InfoSetting = () => {
     <>
       <div className="row_c_sb pd_8 br_t" style={{ height: "48px" }}>
         <span>
-          <span className="fs_18 lh_24 fw">Cellink</span>
+          <span className="fs_18 lh_24 fw">Celllink</span>
           <span className="mg-l_4 fs_12">v1.0.0</span>
         </span>
         <IconFont type="icon-setting" className="fs_24" onClick={() => setShowSettingModal(true)} />

@@ -14,9 +14,14 @@ module.exports = {
       "@share": resolve("src/share"),
     },
 
-    configure: (webpackConfig, { env, paths }) => {
+    configure: (webpackConfig, { paths }) => {
       paths.appIndexJs = resolve(`src/${project}/index.tsx`);
       webpackConfig.entry = resolve(`src/${project}/index.tsx`);
+      webpackConfig.output = {
+        ...webpackConfig.output,
+        // path: __dirname + "/build/" + project,
+        publicPath: "/celllink/oauth",
+      };
 
       return {
         ...webpackConfig,

@@ -15,23 +15,23 @@ export const LoginForm: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onLogin = (value: Params) => {
-    authHttpService.test().subscribe();
-    return;
+    // authHttpService.test().subscribe();
+    // return;
 
-    // if (loading) return;
-    // setLoading(true);
+    if (loading) return;
+    setLoading(true);
 
-    // authHttpService
-    //   .login(value)
-    //   .pipe(finalize(() => setLoading(false)))
-    //   .subscribe({
-    //     next: ({ token }) => {
-    //       messageApi.success("登录成功");
-    //       Cookies.set("token", token);
-    //       window.location.replace(EnvConfig.spaceDomain as string);
-    //     },
-    //     error: (errMsg: string) => messageApi.error(errMsg),
-    //   });
+    authHttpService
+      .login(value)
+      .pipe(finalize(() => setLoading(false)))
+      .subscribe({
+        next: ({ token }) => {
+          messageApi.success("登录成功");
+          Cookies.set("token", token);
+          window.location.replace(EnvConfig.spaceDomain as string);
+        },
+        error: (errMsg: string) => messageApi.error(errMsg),
+      });
   };
 
   return (

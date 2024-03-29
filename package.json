@@ -2,6 +2,17 @@
   "name": "space",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start::oauth": "craco start --project=oauth --port=3000",
+    "start::space": "craco start --project=space --port=4000",
+    "start::manage": "craco start --project=manage --port=5000",
+    "start::website": "craco start --project=website --port=6000",
+    "build::oauth": "craco build --project=oauth",
+    "build::space": "craco build --project=space",
+    "build::manage": "craco build --project=manage",
+    "build::website": "craco build --project=website",
+    "push": "git add . && git commit -m 1 && git push"
+  },
   "dependencies": {
     "@loadable/component": "^5.15.3",
     "@testing-library/jest-dom": "^5.14.1",
@@ -32,13 +43,13 @@
     "web-vitals": "^2.1.0",
     "zustand": "^4.3.9"
   },
-  "scripts": {
-    "start::oauth": "craco start --project=oauth --port=3000",
-    "start::space": "craco start --project=space --port=4000",
-    "start::manage": "craco start --project=manage --port=5000",
-    "start::website": "craco start --project=website --port=6000",
-    "build": "craco build",
-    "push": "git add . && git commit -m 1 && git push"
+  "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@types/loadable__component": "^5.13.5",
+    "@unocss/webpack": "^0.57.1",
+    "craco-less": "^3.0.1",
+    "dotenv": "^16.3.1",
+    "sass": "^1.67.0"
   },
   "eslintConfig": {
     "extends": [
@@ -57,13 +68,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@craco/craco": "^7.1.0",
-    "@types/loadable__component": "^5.13.5",
-    "@unocss/webpack": "^0.57.1",
-    "craco-less": "^3.0.1",
-    "dotenv": "^16.3.1",
-    "sass": "^1.67.0"
   }
 }

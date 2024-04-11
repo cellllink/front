@@ -20,7 +20,7 @@ module.exports = {
       webpackConfig.output = {
         ...webpackConfig.output,
         // path: __dirname + "/build/" + project,
-        publicPath: "/celllink/oauth",
+        // publicPath: "/celllink/oauth",
       };
 
       return {

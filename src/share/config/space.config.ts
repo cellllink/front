@@ -4,6 +4,10 @@ export const Apps = [
     name: "组织管理",
   },
   {
+    to: "product",
+    name: "产品中心",
+  },
+  {
     to: "demand",
     name: "需求管理",
   },

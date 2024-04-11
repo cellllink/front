@@ -23,6 +23,7 @@ const Cloud = loadable(() => import("./cloud"));
 const Organization = loadable(() => import("./organization"));
 const Demand = loadable(() => import("./demand"));
 const Project = loadable(() => import("./project"));
+const Product = loadable(() => import("./product"));
 
 const Header = () => {
   const orgDropdownMenus: MenuProps["items"] = [
@@ -112,19 +113,18 @@ const App = () => (
     <Route path="organization" element={<Organization />} />
     <Route path="demand" element={<Demand />} />
     <Route path="project" element={<Project />} />
+    <Route path="product" element={<Product />} />
   </Routes>
 );
 
 function Index() {
   return (
     <div className={style.layout}>
-      <div className="header br_b">
-        <Header />
-      </div>
+      <div className="header br_b">{/* <Header /> */}</div>
       <div className="containter row">
         <div className="option column br_r">
-          <Menus />
-          <InfoSetting />
+          {/* <Menus />
+          <InfoSetting /> */}
         </div>
         <div className="app">
           <App />

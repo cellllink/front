@@ -89,17 +89,15 @@ const InfoSetting = () => {
   const [showSettingModal, setShowSettingModal] = useState(false);
 
   return (
-    <>
-      <div className="row_c_sb pd_8 br_t" style={{ height: "48px" }}>
-        <span>
-          <span className="fs_18 lh_24 fw">Celllink</span>
-          <span className="mg-l_4 fs_12">v1.0.0</span>
-        </span>
-        <IconFont type="icon-setting" className="fs_24" onClick={() => setShowSettingModal(true)} />
-      </div>
+    <div className="row_c_sb mg-h_8 pd-v_8 br_t" style={{ height: "48px" }}>
+      <span>
+        <span className="fs_18 lh_24 fw">Celllink</span>
+        <span className="mg-l_4 fs_12">v1.0.0</span>
+      </span>
 
+      <IconFont type="icon-setting" className="fs_24" onClick={() => setShowSettingModal(true)} />
       <SettingModal show={showSettingModal} close={() => setShowSettingModal(false)} />
-    </>
+    </div>
   );
 };
 
@@ -120,11 +118,13 @@ const App = () => (
 function Index() {
   return (
     <div className={style.layout}>
-      <div className="header br_b">{/* <Header /> */}</div>
+      <div className="header br_b">
+        <Header />
+      </div>
       <div className="containter row">
         <div className="option column br_r">
-          {/* <Menus />
-          <InfoSetting /> */}
+          <Menus />
+          <InfoSetting />
         </div>
         <div className="app">
           <App />

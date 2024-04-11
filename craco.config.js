@@ -14,7 +14,7 @@ module.exports = {
       "@share": resolve("src/share"),
     },
 
-    configure: (webpackConfig, { paths }) => {
+    configure: (webpackConfig, { env, paths }) => {
       paths.appIndexJs = resolve(`src/${project}/index.tsx`);
       webpackConfig.entry = resolve(`src/${project}/index.tsx`);
       webpackConfig.output = {

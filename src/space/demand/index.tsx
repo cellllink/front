@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Dropdown, MenuProps } from "antd";
 import {
   SyncOutlined,
   SearchOutlined,
@@ -11,14 +11,32 @@ import {
   FilterOutlined,
   SortAscendingOutlined,
   PieChartOutlined,
+  DeleteOutlined,
+  EditOutlined,
 } from "@ant-design/icons";
 import { useKeyPress } from "ahooks";
 
 export default function Demand() {
   useKeyPress(["ctrl.f"], (event: KeyboardEvent) => {
     event.preventDefault();
-    console.log(123);
   });
+
+  const items: MenuProps["items"] = [
+    {
+      icon: <EditOutlined />,
+      label: "重命名",
+      key: "1",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: "删除",
+      icon: <DeleteOutlined />,
+      danger: true,
+      key: "3",
+    },
+  ];
 
   return (
     <div className="pd-h_8 pd-t_8 full_y">
@@ -65,7 +83,10 @@ export default function Demand() {
               <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
                 <TableOutlined />
                 <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱{i}</span>
-                <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
+
+                <Dropdown menu={{ items }} trigger={["click"]}>
+                  <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
+                </Dropdown>
               </div>
             </div>
           ))}

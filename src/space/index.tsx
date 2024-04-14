@@ -74,8 +74,13 @@ const Menus = () => {
   const location = useLocation();
   const defaultSelectedKeys: string[] = [location.pathname.split("/").reverse()[0]];
 
+  // <IconFont type={"icon-" + app.to} style={{ fontSize: "24px" }} />
   const menuitems: MenuProps["items"] = Apps.map((app) =>
-    getMenuItem(<Link to={app.to}>{app.name}</Link>, app.to, <IconFont type={"icon-" + app.to} style={{ fontSize: "24px" }} />)
+    getMenuItem(
+      <Link to={app.to}>{app.name}</Link>,
+      app.to,
+      <img width={24} src={EnvConfig.imageBaseUrl + "/icon/icon-app-" + app.to + ".svg"} alt="" />
+    )
   );
 
   return (

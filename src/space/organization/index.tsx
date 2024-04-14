@@ -1,3 +1,3 @@
 export default function Organization() {
-  return <div>organization</div>;
+  return <div>Organization</div>;
 }

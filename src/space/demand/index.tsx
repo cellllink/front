@@ -16,7 +16,25 @@ import {
 } from "@ant-design/icons";
 import { useKeyPress } from "ahooks";
 
+import { io } from "socket.io-client";
+import { EnvConfig } from "@share/config/env.config";
+
 export default function Demand() {
+  const socket = io(EnvConfig.apiHost + "/demand");
+
+  // socket.on("apply", (daya: any) => {
+  //   console.log(daya);
+  // });
+  // socket.emit("apply", 11);
+
+  // socket.on("test", (daya: any) => {
+  //   console.log(daya);
+  // });
+  socket.emit("test", 11, {}, (data) => {
+    console.error(data);
+  });
+  socket.emit("care");
+
   useKeyPress(["ctrl.f"], (event: KeyboardEvent) => {
     event.preventDefault();
   });
@@ -77,8 +95,8 @@ export default function Demand() {
 
       <div className="row full_y">
         <div className="full_y br_r" style={{ width: "180px" }}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <div className="row-v_c pd-r_8 cs_p">
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
+            <div className="row-v_c pd-r_8 cs_p" key={index}>
               <HolderOutlined className="mg-r_4 fs_16 c_9" />
               <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
                 <TableOutlined />

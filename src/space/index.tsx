@@ -25,15 +25,31 @@ const Demand = loadable(() => import("./demand"));
 const Project = loadable(() => import("./project"));
 const Product = loadable(() => import("./product"));
 
-const Header = () => {
+const HeaderOrg = () => {
   const orgDropdownMenus: MenuProps["items"] = [
     {
       key: "name1",
       label: "武汉利楚商务有限公司武汉利楚商务有限公司",
-      onClick: () => out(),
+      onClick: () => {},
     },
   ];
 
+  return (
+    <Dropdown menu={{ items: orgDropdownMenus }} placement="topLeft" arrow>
+      <div className="row-v_c cs_p">
+        <span className="row-v_c mg-r_8">
+          <img width={32} className="mg-r_8" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
+          <span className="ellipsis_1" style={{ maxWidth: "120px" }}>
+            武汉利楚商务有限公司武汉利楚商务有限公司
+          </span>
+        </span>
+        <DownOutlined />
+      </div>
+    </Dropdown>
+  );
+};
+
+const HeaderUser = () => {
   const userDropdownMenus: MenuProps["items"] = [
     {
       key: "logout",
@@ -48,26 +64,18 @@ const Header = () => {
   };
 
   return (
-    <div className="row_c_sb pd_8">
-      <Dropdown menu={{ items: orgDropdownMenus }} placement="topLeft" arrow>
-        <div className="org row-v_c cs_p">
-          <span className="row-v_c mg-r_8">
-            <img width={32} className="mg-r_8" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
-            <span className="org_name ellipsis_1">武汉利楚商务有限公司</span>
-          </span>
-          <DownOutlined />
-        </div>
-      </Dropdown>
-
-      <Dropdown menu={{ items: userDropdownMenus }} placement="topRight" arrow>
-        <div className="row-v_c cs_p">
-          <img className="userlogo" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
-          <span className="pd-h_8 fs_16">刘杰</span>
-          <DownOutlined />
-        </div>
-      </Dropdown>
-    </div>
+    <Dropdown menu={{ items: userDropdownMenus }} placement="topRight" arrow>
+      <div className="row-v_c cs_p">
+        <img className="userlogo" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
+        <span className="pd-h_8 fs_16">刘杰</span>
+        <DownOutlined />
+      </div>
+    </Dropdown>
   );
+};
+
+const Header = () => {
+  return <div className="row_c_sb pd_8"></div>;
 };
 
 const Menus = () => {
@@ -79,7 +87,7 @@ const Menus = () => {
     getMenuItem(
       <Link to={app.to}>{app.name}</Link>,
       app.to,
-      <img width={24} src={EnvConfig.imageBaseUrl + "/icon/icon-app-" + app.to + ".svg"} alt="" />
+      <img width={20} src={EnvConfig.imageBaseUrl + "/icon/icon-app-" + app.to + ".svg"} alt="" />
     )
   );
 
@@ -94,13 +102,13 @@ const InfoSetting = () => {
   const [showSettingModal, setShowSettingModal] = useState(false);
 
   return (
-    <div className="row_c_sb mg-h_8 pd-v_8 br_t" style={{ height: "48px" }}>
+    <div className="row_c_sb mg-h_8 pd-v_8 br_t">
       <span>
-        <span className="fs_18 lh_24 fw">Celllink</span>
+        <span className="fs_16 lh_24 fw">Celllink</span>
         <span className="mg-l_4 fs_12">v1.0.0</span>
       </span>
 
-      <IconFont type="icon-setting" className="fs_24" onClick={() => setShowSettingModal(true)} />
+      <IconFont type="icon-setting" className="fs_20" onClick={() => setShowSettingModal(true)} />
       <SettingModal show={showSettingModal} close={() => setShowSettingModal(false)} />
     </div>
   );
@@ -123,8 +131,9 @@ const App = () => (
 function Index() {
   return (
     <div className={style.layout}>
-      <div className="header br_b">
-        <Header />
+      <div className="header row_c_sb pd_8 br_b">
+        <HeaderOrg />
+        <HeaderUser />
       </div>
       <div className="containter row">
         <div className="option column br_r">

@@ -1,3 +1,9 @@
+:root {
+  --layout-header-height: 49px; // 48 +  1
+  --layout-menu-width: 141px; // 140 + 1
+  --layout-menu-setting: 49px; // 48 + 1
+}
+
 .layout {
   width: 100vw;
   height: 100vh;
@@ -5,15 +11,7 @@
 
   :global {
     .header {
-      height: 50px;
-
-      .org {
-        width: 164px;
-
-        &_name {
-          max-width: 120px;
-        }
-      }
+      height: var(--layout-header-height);
 
       .userlogo {
         width: 32px;
@@ -27,7 +25,7 @@
     }
 
     .option {
-      width: 180px;
+      width: 134px;
       height: 100%;
     }
 
@@ -39,6 +37,7 @@
     .app {
       width: calc(100vw - 180px);
       height: 100%;
+      overflow-y: auto;
     }
   }
 }

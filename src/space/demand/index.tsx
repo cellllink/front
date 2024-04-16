@@ -1,4 +1,5 @@
-import { Button, Dropdown, MenuProps } from "antd";
+import { Button, Dropdown, MenuProps, Space, Table } from "antd";
+import type { TableColumnsType } from "antd";
 import {
   SyncOutlined,
   SearchOutlined,
@@ -38,6 +39,13 @@ export default function Demand() {
   useKeyPress(["ctrl.f"], (event: KeyboardEvent) => {
     event.preventDefault();
   });
+
+  const dataSource = new Array(1000).fill(1).map((_, key) => ({
+    key,
+    name: "胡彦祖",
+    age: 42,
+    address: "西湖区湖底公园1号",
+  }));
 
   const items: MenuProps["items"] = [
     {
@@ -95,19 +103,33 @@ export default function Demand() {
 
       <div className="row full_y">
         <div className="full_y br_r" style={{ width: "180px" }}>
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
-            <div className="row-v_c pd-r_8 cs_p" key={index}>
-              <HolderOutlined className="mg-r_4 fs_16 c_9" />
-              <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
-                <TableOutlined />
-                <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱{i}</span>
-
-                <Dropdown menu={{ items }} trigger={["click"]}>
-                  <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
-                </Dropdown>
+          <div className="mg-r_8 br_b">
+            <div className="mg-b_4 c_9">系统预设</div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
+              <div className="row-v_c cs_p" key={index}>
+                <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
+                  <TableOutlined />
+                  <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱爱</span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div>
+            <div className="mg-v_4 c_9">自定义视图</div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
+              <div className="row-v_c pd-r_8 cs_p" key={index}>
+                <HolderOutlined className="mg-r_4 fs_16 c_9" />
+                <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
+                  <TableOutlined />
+                  <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱爱</span>
+
+                  <Dropdown menu={{ items }} trigger={["click"]}>
+                    <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
+                  </Dropdown>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div className="mg-r_8 mg-v_4 br_t">
             <div className="row-v_c mg-t_4 pd-v_4 pd-l_8 br_8 cs_p hr">
@@ -115,6 +137,33 @@ export default function Demand() {
               新建视图
             </div>
           </div>
+        </div>
+        <div className="flex1 pd-l_8" style={{ minWidth: "500px" }}>
+          <Table dataSource={dataSource} size="small" pagination={false} scroll={{ x: 500, y: 240 }}>
+            <Table.Column title="姓名" dataIndex="name" key="name" width={100} fixed={"left"} />
+            <Table.Column title="年龄" dataIndex="age" key="age" width={100} />
+            <Table.Column title="住址" dataIndex="address" key="address" width={300} />
+            <Table.Column
+              title="Action"
+              key="action"
+              render={() => (
+                <Space size="middle">
+                  <div>删除</div>
+                </Space>
+              )}
+            />
+            {/* <Table.Column
+              title="操作"
+              key="action"
+              width={100}
+              render={() => (
+                <Space size="middle">
+                  <a>查看</a>
+                  <a>删除</a>
+                </Space>
+              )}
+            /> */}
+          </Table>
         </div>
       </div>
     </div>

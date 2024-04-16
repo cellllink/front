@@ -16,9 +16,49 @@ import {
   EditOutlined,
 } from "@ant-design/icons";
 import { useKeyPress } from "ahooks";
-
 import { io } from "socket.io-client";
 import { EnvConfig } from "@share/config/env.config";
+
+import style from "./index.module.scss";
+
+const Header = () => {
+  return (
+    <div className="header row_c_sb br_b">
+      <div style={{ width: "160px" }}>
+        <div className="pd-h_8 pd-v_4 row-v_c br br_8 hr cs_p">
+          <TableOutlined />
+          <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱仕达的爱仕达的爱仕达的</span>
+          <DoubleLeftOutlined />
+        </div>
+      </div>
+      <div className="flex1 row-v_c pd-l_8">
+        <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
+          <GroupOutlined className="mg-r_4" />
+          分组：1个条件
+        </div>
+        <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
+          <FilterOutlined className="mg-r_4" />
+          筛选：1个条件
+        </div>
+        <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
+          <SortAscendingOutlined className="mg-r_4" />
+          排序：1个条件
+        </div>
+        <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
+          <PieChartOutlined className="mg-r_4" />
+          数据统计
+        </div>
+        <div className="pd-h_4 pd-v_2 br_4 hr">
+          <SyncOutlined className="fs_16 cs_p" />
+        </div>
+      </div>
+      <div className="row-v_c">
+        <SearchOutlined className="fs_16 mg-r_8 cs_p" />
+        <Button type="primary">新增</Button>
+      </div>
+    </div>
+  );
+};
 
 export default function Demand() {
   const socket = io(EnvConfig.apiHost + "/demand");
@@ -65,79 +105,54 @@ export default function Demand() {
   ];
 
   return (
-    <div className="pd-h_8 pd-t_8 full_y">
-      <div className="mg-b_8 pd-b_8 br_b row_c_sb">
-        <div style={{ width: "180px" }}>
-          <div className="pd-h_8 pd-v_4 row-v_c br br_8 hr cs_p">
-            <TableOutlined />
-            <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱仕达的爱仕达的爱仕达的</span>
-            <DoubleLeftOutlined />
-          </div>
-        </div>
-        <div className="flex1 row-v_c pd-l_8">
-          <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
-            <GroupOutlined className="mg-r_4" />
-            分组：1个条件
-          </div>
-          <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
-            <FilterOutlined className="mg-r_4" />
-            筛选：1个条件
-          </div>
-          <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
-            <SortAscendingOutlined className="mg-r_4" />
-            排序：1个条件
-          </div>
-          <div className="mg-r_8 row-v_c pd-h_8 pd-v_2 br_4 cs_p hr">
-            <PieChartOutlined className="mg-r_4" />
-            数据统计
-          </div>
-          <div className="pd-h_4 pd-v_2 br_4 hr">
-            <SyncOutlined className="fs_16 cs_p" />
-          </div>
-        </div>
-        <div className="row-v_c">
-          <SearchOutlined className="fs_16 mg-r_8 cs_p" />
-          <Button type="primary">新增</Button>
-        </div>
-      </div>
+    <div className={style.demand}>
+      <Header />
 
-      <div className="row full_y">
-        <div className="full_y br_r" style={{ width: "180px" }}>
-          <div className="mg-r_8 br_b">
-            <div className="mg-b_4 c_9">系统预设</div>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
-              <div className="row-v_c cs_p" key={index}>
-                <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
-                  <TableOutlined />
-                  <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱爱</span>
-                </div>
+      <div className="container row">
+        <div className="view pt_r pd-b_29 scrollbar__w1 br_r">
+          <div className="mg-v_4 c_9">系统预设</div>
+          {[1, 2, 3].map((i, index) => (
+            <div className="row-v_c cs_p" key={index}>
+              <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
+                <TableOutlined />
+                <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱爱</span>
               </div>
-            ))}
-          </div>
-          <div>
-            <div className="mg-v_4 c_9">自定义视图</div>
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
-              <div className="row-v_c pd-r_8 cs_p" key={index}>
-                <HolderOutlined className="mg-r_4 fs_16 c_9" />
-                <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
-                  <TableOutlined />
-                  <span className="flex1 pd-h_8 ellipsis_1">爱仕达的爱爱</span>
+            </div>
+          ))}
 
-                  <Dropdown menu={{ items }} trigger={["click"]}>
-                    <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
-                  </Dropdown>
-                </div>
+          <div className="br_b"></div>
+
+          <div className="row_c_sb mg-v_4 pd-r_8">
+            <div className="c_9">自定义视图</div>
+            <div className="pd-h_4 pd-v_2 br_4 cs_p hr">
+              <PlusOutlined className="fs_14" />
+            </div>
+          </div>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i, index) => (
+            <div className="row-v_c pd-r_8 cs_p" key={index}>
+              <HolderOutlined className="mg-r_4 fs_16 c_9" />
+              <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
+                <TableOutlined />
+                <span className="flex1 pd-h_8 ellipsis_1">的爱爱</span>
+
+                <Dropdown menu={{ items }} trigger={["click"]}>
+                  <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
+                </Dropdown>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
 
-          <div className="mg-r_8 mg-v_4 br_t">
-            <div className="row-v_c mg-t_4 pd-v_4 pd-l_8 br_8 cs_p hr">
+          <div className="view_new pd-r_8">
+            <div className="row-v_c pd-v_4 pd-l_8 cs_p hr br_t">
               <PlusOutlined className="mg-r_4" />
               新建视图
             </div>
           </div>
         </div>
+        <div className="list"></div>
+      </div>
+
+      {/* <div className="row full_y">
         <div className="flex1 pd-l_8" style={{ minWidth: "500px" }}>
           <Table dataSource={dataSource} size="small" pagination={false} scroll={{ x: 500, y: 240 }}>
             <Table.Column title="姓名" dataIndex="name" key="name" width={100} fixed={"left"} />
@@ -152,7 +167,7 @@ export default function Demand() {
                 </Space>
               )}
             />
-            {/* <Table.Column
+            <Table.Column
               title="操作"
               key="action"
               width={100}
@@ -162,10 +177,10 @@ export default function Demand() {
                   <a>删除</a>
                 </Space>
               )}
-            /> */}
+            />
           </Table>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 :root {
   --layout-header-height: 49px; // 48 +  1
   --layout-menu-width: 141px; // 140 + 1
-  --layout-menu-setting: 49px; // 48 + 1
+  --layout-setting-height: 41px; // 24 + (8 * 2) + 1
 }
 
 .layout {
@@ -12,30 +12,26 @@
   :global {
     .header {
       height: var(--layout-header-height);
+    }
 
-      .userlogo {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
+    .container {
+      height: calc(100vh - var(--layout-header-height));
+    }
+
+    .menu {
+      width: var(--layout-menu-width);
+      &_list {
+        height: calc(100% - var(--layout-setting-height));
+        overflow-y: auto;
       }
     }
 
-    .containter {
-      height: calc(100vh - 50px);
-    }
-
-    .option {
-      width: 134px;
-      height: 100%;
-    }
-
-    .menus {
-      max-height: calc(100% - 48px);
-      overflow-y: auto;
+    .version {
+      height: var(--layout-setting-height);
     }
 
     .app {
-      width: calc(100vw - 180px);
+      width: calc(100vw - var(--layout-menu-width));
       height: 100%;
       overflow-y: auto;
     }

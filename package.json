@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev-----------": "",
-    "start::oauth--": "craco start --project=oauth --port=3000",
-    "start::space--": "craco start --project=space --port=4000",
+    "start::oauth -": "craco start --project=oauth --port=3000",
+    "start::space -": "craco start --project=space --port=4000",
     "start::manage-": "craco start --project=manage --port=5000",
     "start::website": "craco start --project=website --port=6000",
     "build---------": "",
-    "build::oauth--": "craco build --project=oauth",
-    "build::space--": "craco build --project=space",
+    "build::oauth -": "craco build --project=oauth",
+    "build::space -": "craco build --project=space",
     "build::manage-": "craco build --project=manage",
     "build::website": "craco build --project=website",
     "push": "git add . && git commit -m 1 && git push"

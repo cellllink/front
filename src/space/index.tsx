@@ -39,7 +39,7 @@ const HeaderOrg = () => {
       <div className="row-v_c cs_p">
         <span className="row-v_c mg-r_8">
           <img width={32} className="mg-r_8" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
-          <span className="ellipsis_1" style={{ maxWidth: "120px" }}>
+          <span className="fs_14 ellipsis_1" style={{ maxWidth: "120px" }}>
             武汉利楚商务有限公司武汉利楚商务有限公司
           </span>
         </span>
@@ -66,19 +66,20 @@ const HeaderUser = () => {
   return (
     <Dropdown menu={{ items: userDropdownMenus }} placement="topRight" arrow>
       <div className="row-v_c cs_p">
-        <img className="userlogo" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
-        <span className="pd-h_8 fs_16">刘杰</span>
+        <img
+          width={32}
+          style={{ borderRadius: "50%" }}
+          src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp"
+          alt=""
+        />
+        <span className="pd-h_8 fs_14">刘杰</span>
         <DownOutlined />
       </div>
     </Dropdown>
   );
 };
 
-const Header = () => {
-  return <div className="row_c_sb pd_8"></div>;
-};
-
-const Menus = () => {
+const MenuList = () => {
   const location = useLocation();
   const defaultSelectedKeys: string[] = [location.pathname.split("/").reverse()[0]];
 
@@ -92,17 +93,17 @@ const Menus = () => {
   );
 
   return (
-    <div className="flex1 menus scrollbar__w1">
+    <div className="menu_list scrollbar__w1">
       <Menu defaultSelectedKeys={defaultSelectedKeys} mode="inline" items={menuitems} />
     </div>
   );
 };
 
-const InfoSetting = () => {
+const Version = () => {
   const [showSettingModal, setShowSettingModal] = useState(false);
 
   return (
-    <div className="row_c_sb mg-h_8 pd-v_8 br_t">
+    <div className="version row_c_sb mg-h_8 br_t">
       <span>
         <span className="fs_16 lh_24 fw">Celllink</span>
         <span className="mg-l_4 fs_12">v1.0.0</span>
@@ -135,10 +136,11 @@ function Index() {
         <HeaderOrg />
         <HeaderUser />
       </div>
-      <div className="containter row">
-        <div className="option column br_r">
-          <Menus />
-          <InfoSetting />
+
+      <div className="container row">
+        <div className="menu br_r">
+          <MenuList />
+          <Version />
         </div>
         <div className="app">
           <App />

@@ -29,7 +29,7 @@ const HeaderOrg = () => {
   const orgDropdownMenus: MenuProps["items"] = [
     {
       key: "name1",
-      label: "武汉利楚商务有限公司武汉利楚商务有限公司",
+      label: "无趣有限公司",
       onClick: () => {},
     },
   ];
@@ -40,7 +40,7 @@ const HeaderOrg = () => {
         <span className="row-v_c mg-r_8">
           <img width={32} className="mg-r_8" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
           <span className="fs_14 ellipsis_1" style={{ maxWidth: "120px" }}>
-            武汉利楚商务有限公司武汉利楚商务有限公司
+            无趣有限公司
           </span>
         </span>
         <DownOutlined />
@@ -72,7 +72,7 @@ const HeaderUser = () => {
           src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp"
           alt=""
         />
-        <span className="pd-h_8 fs_14">刘杰</span>
+        <span className="pd-h_8 fs_14">care</span>
         <DownOutlined />
       </div>
     </Dropdown>

@@ -7,7 +7,7 @@
   padding: 0 8px;
   height: 100%;
 
-  :global  {
+  :global {
     .header {
       height: var(--app-demand-header-height);
     }
@@ -17,9 +17,13 @@
     }
 
     .view {
+      box-sizing: border-box;
       position: relative;
       width: var(--app-demand-view-width);
-      overflow-y: auto;
+
+      &--hidden {
+        width: 0;
+      }
 
       &_new {
         position: absolute;
@@ -27,6 +31,14 @@
         bottom: 0;
         left: 0;
         background: #fff;
+      }
+    }
+
+    .list {
+      width: calc(100% - var(--app-demand-view-width));
+
+      &--full {
+        width: 100%;
       }
     }
   }

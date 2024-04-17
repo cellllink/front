@@ -14,6 +14,7 @@ import {
   PieChartOutlined,
   DeleteOutlined,
   EditOutlined,
+  CopyOutlined,
 } from "@ant-design/icons";
 import { io } from "socket.io-client";
 import { EnvConfig } from "@share/config/env.config";
@@ -44,7 +45,7 @@ const Search = () => {
     setShow(true);
   };
 
-  useKeyPress(["ctrl.f"], (event: KeyboardEvent) => {
+  useKeyPress(["ctrl.f", "Meta.f"], (event: KeyboardEvent) => {
     event.preventDefault();
     if (!show) onOpenSearch();
   });
@@ -108,9 +109,14 @@ const View = () => {
 
   const items: MenuProps["items"] = [
     {
-      icon: <EditOutlined />,
+      icon: <EditOutlined className="fs_16" />,
       label: "重命名",
-      key: "1",
+      key: "rename",
+    },
+    {
+      icon: <CopyOutlined />,
+      label: "复制",
+      key: "copy",
     },
     {
       type: "divider",
@@ -119,12 +125,12 @@ const View = () => {
       label: "删除",
       icon: <DeleteOutlined />,
       danger: true,
-      key: "3",
+      key: "delete",
     },
   ];
 
   return (
-    <div className={"view pd-r_8 scrollbar__w1 br_r " + (!showView && "view--hidden")}>
+    <div className="view pd-r_8 scrollbar__w1 br_r" style={{ display: showView ? "block" : "none" }}>
       <div className="pd-b_4 br_b">
         <div className="mg-v_4 c_9">系统预设</div>
         {[1, 2, 3].map((i, index) => (
@@ -140,20 +146,20 @@ const View = () => {
       <div>
         <div className="row_c_sb mg-v_4">
           <div className="c_9">自定义视图</div>
-          <div className="pd-h_4 pd-v_2 br_4 cs_p hr">
+          <div className="pd-h_4 pd-v_3 br_4 cs_p hr">
             <PlusOutlined className="fs_14" />
           </div>
         </div>
         {[1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8, 8].map((i, index) => (
           <div className="row-v_c cs_p" key={index}>
             <HolderOutlined className="fs_16 c_9" />
-            <div className="flex1 row-v_sb pd-l_8 pd-v_4 br_8 hr">
+            <div className="flex1 row-v_sb pd-h_8 pd-v_4 br_8 hr">
               <TableOutlined />
-              <span className="pd-l_8 pd-r_4 ellipsis_1" style={{ width: "92px" }}>
+              <span className="pd-l_8 pd-r_4 ellipsis_1" style={{ width: "88px" }}>
                 氨基酸氨基酸
               </span>
-              <Dropdown menu={{ items }} trigger={["click"]}>
-                <EllipsisOutlined className="pd-h_4 fs_16 br_4 hr" />
+              <Dropdown menu={{ items }} trigger={["click"]} arrow={{ pointAtCenter: true }}>
+                <EllipsisOutlined className="pd-h_2 fs_16 br_4 hr" />
               </Dropdown>
             </div>
           </div>
@@ -175,7 +181,7 @@ const List = () => {
   }));
 
   return (
-    <div className={"pd-t_8 list-full " + (showView && "list pd-l_8")}>
+    <div className="pd-t_8 pd-l_8" style={{ width: showView ? "calc(100% - var(--app-demand-view-width))" : "100%" }}>
       <Table virtual dataSource={dataSource} pagination={false} scroll={{ x: 500, y: listHeight }}>
         <Table.Column title="姓名" dataIndex="name" key="name" width={100} fixed={"left"} />
         <Table.Column title="年龄" dataIndex="age" key="age" width={100} />

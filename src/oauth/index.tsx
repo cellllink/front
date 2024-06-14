@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { bootstrap } from "../share/bootstrap";
 import queryString from "query-string";
@@ -8,9 +9,9 @@ import { RegisterForm } from "./component/registerForm";
 import { Tripartite } from "./component/tripartite";
 import { message } from "antd";
 
+import "virtual:uno.css";
 import "../share/style/index.scss";
 import style from "./index.module.scss";
-import { useEffect } from "react";
 
 // declare var Cookies: any;
 

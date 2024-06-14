@@ -1,9 +1,9 @@
 import { PlusCircleOutlined, DoubleRightOutlined, DoubleLeftOutlined, FolderOutlined } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useState } from "react";
-import { ItemType } from "antd/lib/menu/hooks/useItems";
 import { getMenuItem } from "@share/util/antd.util";
 import { AddViewModal } from "./addViewModal";
+import { ItemType } from "antd/lib/menu/interface";
 
 export default function View() {
   const [menuList, setMenuList] = useState<ItemType[]>([

@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
 import { AddGroupOrListSubject, currentItemSubject } from "../util/signal.util";
 import { TodoGroup } from "../type";
-import { ItemType } from "antd/lib/menu/hooks/useItems";
 import { todoGroupHttpService } from "@share/http/api/todo.http.service";
 import { BsTodoGroupPo } from "@share/http/po/bs.todo.po";
+import { ItemType } from "antd/lib/menu/interface";
 
 function orderMenu(list: BsTodoGroupPo[]) {
   const groups = list.filter((i) => !i.catalogue_id);

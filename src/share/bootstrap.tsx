@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RecoilRoot } from "recoil";
 import { HashRouter, Routes } from "react-router-dom";
 import { ConfigProvider, App } from "antd";
 import dayjs from "dayjs";
@@ -17,15 +16,13 @@ export function bootstrap(main: React.ReactNode) {
   ReactDOM.createRoot(RootElement).render(
     // 拖住库 暂时不支持严格模式
     // <React.StrictMode>
-    <RecoilRoot>
-      <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
-        <App>
-          <HashRouter>
-            <Routes>{main}</Routes>
-          </HashRouter>
-        </App>
-      </ConfigProvider>
-    </RecoilRoot>
+    <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
+      <App>
+        <HashRouter>
+          <Routes>{main}</Routes>
+        </HashRouter>
+      </App>
+    </ConfigProvider>
     // </React.StrictMode>
   );
 }

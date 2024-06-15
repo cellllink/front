@@ -25,7 +25,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@share": path.resolve(__dirname, "src/share"),
+      "@share": path.resolve(__dirname, "./src/share"),
     }
   },
   plugins: [UnoCSS(), react()],

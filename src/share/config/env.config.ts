@@ -1,5 +1,3 @@
-import 'vite/client'
-
 export const EnvConfig = {
   apiHost: import.meta.env.VITE_API_HOST || "",
   apiHostPrefix: import.meta.env.VITE_API_HOST_PREFIX || "",

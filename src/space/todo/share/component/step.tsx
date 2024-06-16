@@ -3,7 +3,7 @@ import { Button, Checkbox, Dropdown, MenuProps, Spin } from "antd";
 import { useEffect, useState } from "react";
 import { currentItemSubject } from "../util/signal.util";
 import { TodoStep } from "../type";
-import BraftEditor, { ControlType } from "braft-editor";
+// import BraftEditor, { ControlType } from "braft-editor";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 interface ItemComponentProp {
@@ -84,9 +84,9 @@ export default function Step() {
 
   const onClose = () => currentItemSubject.next(null);
 
-  const editorState = BraftEditor.createEditorState(null);
+  // const editorState = BraftEditor.createEditorState(null);
 
-  const controls: ControlType[] = ["bold", "underline", "strike-through", "emoji", "link", "list-ul", "list-ol"];
+  // const controls: ControlType[] = ["bold", "underline", "strike-through", "emoji", "link", "list-ul", "list-ol"];
 
   const onDragStart = (e: any) => console.log(e);
   const onDragUpdate = (e: any) => console.log(e);
@@ -147,9 +147,7 @@ export default function Step() {
             </div>
           </Spin>
 
-          <div className="mg-t_8 br_t flex1">
-            <BraftEditor value={editorState} controls={controls} />
-          </div>
+          <div className="mg-t_8 br_t flex1">{/* <BraftEditor value={editorState} controls={controls} /> */}</div>
         </div>
 
         <div className="pd-v_8 ta_c br_t" style={{ height: "48px" }}>

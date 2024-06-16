@@ -6,6 +6,13 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    //
+    "baseUrl": "src",
+    "noImplicitAny": false,
+    "paths": {
+      "@share/*": ["share/*"]
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -20,8 +27,5 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["src", "declaration.d.ts"],
-  "exclude": ["src/**/*.scss"],
-  "extends": "./tsconfig-paths.json",
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "declaration.d.ts"]
 }

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import type { MenuProps } from "antd";
 import { AddGroupOrListSubject, currentItemSubject } from "../util/signal.util";
 import { TodoGroup } from "../type";
-import { ItemType } from "antd/lib/menu/interface";
 import { todoGroupHttpService } from "@share/http/api/todo.http.service";
 import { BsTodoGroupPo } from "@share/http/po/bs.todo.po";
 import { ItemType } from "antd/lib/menu/interface";
@@ -77,9 +76,9 @@ export default function Menu() {
               <FolderOutlined style={{ fontSize: "16px" }} />,
               group.children.length === 0
                 ? undefined
-                : group.children.map((list) => getMenuItem(list.title, list.id, <UnorderedListOutlined style={{ fontSize: "16px" }} />))
+                : group.children.map((list) => getMenuItem(list.title, list.id, <UnorderedListOutlined style={{ fontSize: "16px" }} />)),
             );
-          })
+          }),
         );
       });
     const Subscription = AddGroupOrListSubject.subscribe((type: "group" | "list") => {
@@ -90,7 +89,7 @@ export default function Menu() {
         getMenuItem(
           <WillAdd type={type} />,
           type === "list" ? "新列表" : "新分组",
-          type === "list" ? <UnorderedListOutlined style={{ fontSize: "16px" }} /> : <FolderOutlined style={{ fontSize: "16px" }} />
+          type === "list" ? <UnorderedListOutlined style={{ fontSize: "16px" }} /> : <FolderOutlined style={{ fontSize: "16px" }} />,
         ),
       ]);
     });

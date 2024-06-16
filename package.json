@@ -11,9 +11,10 @@
     "start::manage": "vite -- --project=manage --port=5000",
     "start::website": "vite -- --project=website --port=6000",
     "build---------": "",
-    "build::oauth -": "tsc && vite build -- --project=oauth",
-    "build::space -": "tsc && vite build -- --project=space",
-    "build::manage-": "tsc && vite build -- --project=manage",
+    "build": "tsc && vite build -- --project=oauth",
+    "build::oauth": "tsc && vite build -- --project=oauth",
+    "build::space": "tsc && vite build -- --project=space",
+    "build::manage": "tsc && vite build -- --project=manage",
     "build::website": "tsc && vite build -- --project=website",
     "push": "git add . && git commit -m 1 && git push",
     "braft-editor": "^2.3.9",
@@ -52,5 +53,8 @@
     "typescript": "^5.2.2",
     "unocss": "^0.61.0",
     "vite": "^5.2.0"
+  },
+  "prettier": {
+    "printWidth": 140
   }
 }

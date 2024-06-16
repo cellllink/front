@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import path from 'path'
+import path from "path";
 import react from "@vitejs/plugin-react";
 import UnoCSS from "unocss/vite";
 
@@ -13,21 +13,22 @@ function getProcessArgv(): Record<string, any> {
 }
 const { port, project } = getProcessArgv();
 
+console.log("即将打包：" + project);
+
 export default defineConfig({
   server: {
     port,
-    open: `src/${project}/index.html`
+    open: `${project}.html`,
   },
   build: {
     rollupOptions: {
-      input: `src/${project}/index.html`
-    }
+      input: `${project}.html`,
+    },
   },
   resolve: {
     alias: {
       "@share": path.resolve(__dirname, "./src/share"),
-    }
+    },
   },
   plugins: [UnoCSS(), react()],
-})
-  
+});

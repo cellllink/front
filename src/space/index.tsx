@@ -11,9 +11,10 @@ import { Apps } from "@share/config/space.config";
 import { Dropdown, Menu, MenuProps } from "antd";
 import { getMenuItem } from "../share/util/antd.util";
 
+import "virtual:uno.css";
 import "../share/style/index.scss";
 import style from "./index.module.scss";
-import "braft-editor/dist/index.css";
+// import "braft-editor/dist/index.css";
 import { useUserStore } from "@share/store/core/user.core.store";
 import { useMount } from "ahooks";
 
@@ -72,12 +73,7 @@ const HeaderUser = () => {
   return (
     <Dropdown menu={{ items: userDropdownMenus }} placement="topRight" arrow>
       <div className="row-v_c cs_p">
-        <img
-          width={32}
-          style={{ borderRadius: "50%" }}
-          src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp"
-          alt=""
-        />
+        <img className="w_32 br_50%" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
         <span className="pd-h_8 fs_14">{user?.name}</span>
         <DownOutlined />
       </div>
@@ -94,7 +90,7 @@ const MenuList = () => {
     getMenuItem(
       <Link to={app.to}>{app.name}</Link>,
       app.to,
-      <img width={20} src={EnvConfig.imageBaseUrl + "/icon/icon-app-" + app.to + ".svg"} alt="" />,
+      <img className="w_20" src={EnvConfig.imageBaseUrl + "/icon/icon-app-" + app.to + ".svg"} alt="" />,
     ),
   );
 

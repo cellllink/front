@@ -78,15 +78,9 @@ export const MetacssRules: ConfigBase["rules"] = [
   [/^h_(\d+)$/, ([, d]) => ({ height: `${d}px` })],
   // 外边距
   [/^mg_(\d+)$/, ([, d]) => ({ margin: `${d}px` })],
-  [
-    /^mg-h_(\d+)$/,
-    ([, d]) => ({ "margin-left": `${d}px`, "margin-right": `${d}px` }),
-  ],
+  [/^mg-h_(\d+)$/, ([, d]) => ({ "margin-left": `${d}px`, "margin-right": `${d}px` })],
   ["mg-h_a", { margin: "0 auto" }],
-  [
-    /^mg-v_(\d+)$/,
-    ([, d]) => ({ "margin-top": `${d}px`, "margin-bottom": `${d}px` }),
-  ],
+  [/^mg-v_(\d+)$/, ([, d]) => ({ "margin-top": `${d}px`, "margin-bottom": `${d}px` })],
   ["mg-v_a", { margin: "auto 0" }],
   [/^mg-t_(\d+)$/, ([, d]) => ({ "margin-top": `${d}px` })],
   [/^mg-b_(\d+)$/, ([, d]) => ({ "margin-bottom": `${d}px` })],
@@ -94,15 +88,9 @@ export const MetacssRules: ConfigBase["rules"] = [
   [/^mg-r_(\d+)$/, ([, d]) => ({ "margin-right": `${d}px` })],
   // 内边距
   [/^pd_(\d+)$/, ([, d]) => ({ padding: `${d}px` })],
-  [
-    /^pd-h_(\d+)$/,
-    ([, d]) => ({ "padding-left": `${d}px`, "padding-right": `${d}px` }),
-  ],
+  [/^pd-h_(\d+)$/, ([, d]) => ({ "padding-left": `${d}px`, "padding-right": `${d}px` })],
   ["pd-h_a", { padding: "0 auto" }],
-  [
-    /^pd-v_(\d+)$/,
-    ([, d]) => ({ "padding-top": `${d}px`, "padding-bottom": `${d}px` }),
-  ],
+  [/^pd-v_(\d+)$/, ([, d]) => ({ "padding-top": `${d}px`, "padding-bottom": `${d}px` })],
   ["pd-v_a", { padding: "auto 0" }],
   [/^pd-t_(\d+)$/, ([, d]) => ({ "padding-top": `${d}px` })],
   [/^pd-b_(\d+)$/, ([, d]) => ({ "padding-bottom": `${d}px` })],
@@ -144,4 +132,5 @@ export const MetacssRules: ConfigBase["rules"] = [
   [/^op_(\d+)$/, ([, d]) => ({ opacity: `${+d / 10}` })],
   // 圆角
   [/^br_(\d+)$/, ([, d]) => ({ "border-radius": `${d}px` })],
+  [/^br_(\d+)%$/, ([, d]) => ({ "border-radius": `${d}%` })],
 ];

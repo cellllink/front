@@ -1,11 +1,13 @@
-export interface CoUserPo {
-  id: number;
+import { BaseEntityPo } from "./baseEntity.po";
+
+export class CoUserPo extends BaseEntityPo {
+  account: string;
+  password: string;
+  salt: string;
   name: string;
   avatar: string;
   phone: string;
   sex: number;
-  register_time: Date;
-  update_time: Date;
 }
 
 export interface CoOrganizationPo {}

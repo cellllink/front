@@ -41,7 +41,7 @@ export class BaseHttpService {
     },
   };
 
-  get baseUrl(): string {
+  private get baseUrl(): string {
     return this.host + this.hostPrefix + this.modulePrefix;
   }
 
@@ -58,7 +58,7 @@ export class BaseHttpService {
     return response.data;
   }
 
-  public get<T>(url: string, queryParams: QueryParams, httpOption: HttpOption = {}): Observable<T> {
+  protected get<T>(url: string, queryParams: QueryParams, httpOption: HttpOption = {}): Observable<T> {
     const { pageNumber, pageSize, params } = queryParams;
     const { headers } = Object.assign(httpOption, this.defaultHttpOption);
 
@@ -70,7 +70,7 @@ export class BaseHttpService {
     }).pipe(map((res) => this.successHandle(res, httpOption)));
   }
 
-  public post<T>(url: string, body: Params = {}, httpOption: HttpOption = {}): Observable<T> {
+  protected post<T>(url: string, body: Params = {}, httpOption: HttpOption = {}): Observable<T> {
     const { headers } = Object.assign(httpOption, this.defaultHttpOption);
 
     return ajax<IResponse<T>>({
@@ -81,7 +81,15 @@ export class BaseHttpService {
     }).pipe(map((res) => this.successHandle(res, httpOption)));
   }
 
-  public query<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
+  // protected query<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
+  //   return this.get<QueryData<T>>(url, {
+  //     ...params,
+  //     pageNumber,
+  //     pageSize,
+  //   });
+  // }
+
+  protected postQuery<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
     return this.post<QueryData<T>>(url, {
       ...params,
       pageNumber,

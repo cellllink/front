@@ -12,5 +12,5 @@ export function useClientHeight(over: number) {
 
   useEventListener("resize", run);
 
-  return [height];
+  return { height };
 }

@@ -1,24 +1,25 @@
 import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { useState } from "react";
-import { useAuthHttpService } from "@share/http/api/auth.http.service";
+import { useRegisterHttp } from "@share/http/api/oauth/register.http.service";
 import { useNavigate } from "react-router-dom";
 import { finalize } from "rxjs";
+import { useLoadingState } from "@share/hook/useLoadingState.hook";
+import { Params } from "@share/http/base.http.service";
 
 export const RegisterForm: React.FC = () => {
   const [loginForm] = Form.useForm();
-  const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-  const authHttpService = useAuthHttpService();
+  const registerHttp = useRegisterHttp();
+  const { getLock, reverseLock } = useLoadingState();
 
-  function onRegister(value: any) {
-    if (loading) return;
-    setLoading(true);
+  function onRegister(value: Params) {
+    if (getLock("onRegister")) return;
+    reverseLock("onRegister");
 
-    authHttpService
-      .register(value)
-      .pipe(finalize(() => setLoading(false)))
+    registerHttp
+      .account(value)
+      .pipe(finalize(() => reverseLock("onRegister")))
       .subscribe({
         next: () => {
           messageApi.success("注册成功");
@@ -40,7 +41,7 @@ export const RegisterForm: React.FC = () => {
           <Input.Password placeholder="请输入密码" prefix={<LockOutlined />} size="large" />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" block size="large">
+        <Button type="primary" htmlType="submit" size="large" block loading={getLock("onRegister")}>
           注册
         </Button>
       </Form>

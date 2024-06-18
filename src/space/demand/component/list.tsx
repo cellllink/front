@@ -1,9 +1,9 @@
 import { Space, Table, Typography } from "antd";
-import { useClientHeight } from "@share/hook";
+import { useClientHeight } from "@share/hook/useClientHeight.hook";
 import { useDemandStore } from "../demand.store";
 
 export const List = () => {
-  const [listHeight] = useClientHeight(143); // 143 = 49 + 41 + 8 + 37 + 8
+  const { height: listHeight } = useClientHeight(143); // 143 = 49 + 41 + 8 + 37 + 8
   const { showView } = useDemandStore();
 
   const dataSource = new Array(1000).fill(1).map((_, key) => ({

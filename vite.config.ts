@@ -22,7 +22,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      input: `${project}.html`,
+      input: `src/${project}/index.html`,
     },
   },
   resolve: {

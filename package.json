@@ -5,17 +5,16 @@
   "type": "module",
   "scripts": {
     "dev-----------": "",
-    "dev": "vite -- --project=oauth --port=3000",
     "start::oauth": "vite -- --project=oauth --port=3000",
     "start::space": "vite -- --project=space --port=4000",
     "start::manage": "vite -- --project=manage --port=5000",
     "start::website": "vite -- --project=website --port=6000",
     "build---------": "",
-    "build": "tsc && vite build -- --project=oauth",
     "build::oauth": "tsc && vite build -- --project=oauth",
     "build::space": "tsc && vite build -- --project=space",
     "build::manage": "tsc && vite build -- --project=manage",
     "build::website": "tsc && vite build -- --project=website",
+    "-------------": "",
     "push": "git add . && git commit -m 1 && git push",
     "braft-editor": "^2.3.9",
     "readme": "vite --mode test "

@@ -1,29 +1,26 @@
-import { useState } from "react";
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { useAuthHttpService } from "@share/http/api/auth.http.service";
+import { useLoginHttp } from "@share/http/api/oauth/login.http.service";
 import { Params } from "@share/http/base.http.service";
 import { finalize } from "rxjs";
 import { EnvConfig } from "@share/config/env.config";
 import { message } from "antd";
 import Cookies from "js-cookie";
+import { useLoadingState } from "@share/hook/useLoadingState.hook";
 
 export const LoginForm: React.FC = () => {
   const [loginForm] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  const authHttpService = useAuthHttpService();
+  const loginHttp = useLoginHttp();
   const [messageApi, contextHolder] = message.useMessage();
+  const { getLock, reverseLock } = useLoadingState();
 
   const onLogin = (value: Params) => {
-    // authHttpService.test().subscribe();
-    // return;
+    if (getLock("onLogin")) return;
+    reverseLock("onLogin");
 
-    if (loading) return;
-    setLoading(true);
-
-    authHttpService
-      .login(value)
-      .pipe(finalize(() => setLoading(false)))
+    loginHttp
+      .account(value)
+      .pipe(finalize(() => reverseLock("onLogin")))
       .subscribe({
         next: ({ token }) => {
           messageApi.success("登录成功");
@@ -46,7 +43,7 @@ export const LoginForm: React.FC = () => {
           <Input.Password placeholder="请输入密码" prefix={<LockOutlined />} size="large" />
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" block size="large" loading={loading}>
+        <Button type="primary" htmlType="submit" block size="large" loading={getLock("onLogin")}>
           登陆
         </Button>
       </Form>

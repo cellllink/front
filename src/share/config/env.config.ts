@@ -1,6 +1,6 @@
 export const EnvConfig = {
   apiHost: import.meta.env.VITE_API_HOST || "",
-  apiHostPrefix: import.meta.env.VITE_API_HOST_PREFIX || "",
+  serverHost: import.meta.env.VITE_SERVER_HOST,
   oauthDomain: import.meta.env.VITE_OAUTH_DOMAIN,
   spaceDomain: import.meta.env.VITE_SPACE_DOMAIN,
   manageDomain: import.meta.env.VITE_MANAGE_DOMAIN,
@@ -8,4 +8,3 @@ export const EnvConfig = {
   githubClientId: import.meta.env.VITE_GITHUB_CLIENT_ID,
   imageBaseUrl: import.meta.env.VITE_IMAGE_BASE_URL,
 };
-

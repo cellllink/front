@@ -1,6 +1,8 @@
-import { ApiBaseHttpService, Params } from "../../base.http.service";
+import { EnvConfig } from "@share/config/env.config";
+import { BaseHttpService, Params } from "@share/http/base.http.service";
 
-class LoginHttpService extends ApiBaseHttpService {
+class LoginHttpService extends BaseHttpService {
+  protected host = EnvConfig.apiHost; // 域名
   protected modulePrefix = "/oauth/login"; // 模块前缀
 
   account(params: Params) {

@@ -29,8 +29,7 @@ interface HttpOption {
 }
 
 export class BaseHttpService {
-  private host = ""; // 域名
-  private hostPrefix = ""; // 公共域名前缀
+  protected host = ""; // 域名
   protected modulePrefix = ""; // 模块前缀
 
   private defaultHttpOption: HttpOption = {
@@ -42,12 +41,7 @@ export class BaseHttpService {
   };
 
   private get baseUrl(): string {
-    return this.host + this.hostPrefix + this.modulePrefix;
-  }
-
-  constructor(host: string, hostPrefix: string) {
-    this.host = host;
-    if (hostPrefix) this.hostPrefix = hostPrefix;
+    return this.host + this.modulePrefix;
   }
 
   private successHandle<T>({ response }: AjaxResponse<IResponse<T>>, httpOption: HttpOption = {}): T {
@@ -58,7 +52,29 @@ export class BaseHttpService {
     return response.data;
   }
 
-  protected get<T>(url: string, queryParams: QueryParams, httpOption: HttpOption = {}): Observable<T> {
+  public get<T>(url: string, body: Params = {}, httpOption: HttpOption = {}): Observable<T> {
+    const { headers } = Object.assign(httpOption, this.defaultHttpOption);
+
+    return ajax<IResponse<T>>({
+      method: "GET",
+      url: this.baseUrl + url,
+      headers,
+      body,
+    }).pipe(map((res) => this.successHandle(res, httpOption)));
+  }
+
+  public post<T>(url: string, body: Params = {}, httpOption: HttpOption = {}): Observable<T> {
+    const { headers } = Object.assign(httpOption, this.defaultHttpOption);
+
+    return ajax<IResponse<T>>({
+      method: "POST",
+      url: this.baseUrl + url,
+      headers,
+      body,
+    }).pipe(map((res) => this.successHandle(res, httpOption)));
+  }
+
+  public query<T>(url: string, queryParams: QueryParams, httpOption: HttpOption = {}): Observable<T> {
     const { pageNumber, pageSize, params } = queryParams;
     const { headers } = Object.assign(httpOption, this.defaultHttpOption);
 
@@ -70,26 +86,7 @@ export class BaseHttpService {
     }).pipe(map((res) => this.successHandle(res, httpOption)));
   }
 
-  protected post<T>(url: string, body: Params = {}, httpOption: HttpOption = {}): Observable<T> {
-    const { headers } = Object.assign(httpOption, this.defaultHttpOption);
-
-    return ajax<IResponse<T>>({
-      method: "POST",
-      url: this.baseUrl + url,
-      headers,
-      body,
-    }).pipe(map((res) => this.successHandle(res, httpOption)));
-  }
-
-  // protected query<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
-  //   return this.get<QueryData<T>>(url, {
-  //     ...params,
-  //     pageNumber,
-  //     pageSize,
-  //   });
-  // }
-
-  protected postQuery<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
+  public postQuery<T>(url: string, { params, pageNumber, pageSize }: QueryParams): Observable<QueryData<T>> {
     return this.post<QueryData<T>>(url, {
       ...params,
       pageNumber,
@@ -99,7 +96,16 @@ export class BaseHttpService {
 }
 
 export class ApiBaseHttpService extends BaseHttpService {
-  constructor() {
-    super(EnvConfig.apiHost, EnvConfig.apiHostPrefix);
-  }
+  // constructor() {
+  //   super(EnvConfig.apiHost);
+  // }
 }
+
+class CommonServerHttpService extends BaseHttpService {
+  protected host: string = EnvConfig.serverHost;
+  protected modulePrefix: string = "/common";
+}
+
+export const commonHttpService = new CommonServerHttpService();
+
+// export const userInfo = () => commonHttpService.get("/user/info");

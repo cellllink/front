@@ -1,5 +1,4 @@
 export const EnvConfig = {
-  apiHost: import.meta.env.VITE_API_HOST || "",
   serverHost: import.meta.env.VITE_SERVER_HOST,
   oauthDomain: import.meta.env.VITE_OAUTH_DOMAIN,
   spaceDomain: import.meta.env.VITE_SPACE_DOMAIN,

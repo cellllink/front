@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { bootstrap } from "../share/bootstrap";
 import queryString from "query-string";
@@ -12,6 +12,8 @@ import { message } from "antd";
 import "virtual:uno.css";
 import "../share/style/index.scss";
 import style from "./index.module.scss";
+import useSWRMutation from "swr/mutation";
+import { loginFetcher } from "@share/fetcher/oauth/login.fetcher";
 
 // declare var Cookies: any;
 
@@ -35,6 +37,16 @@ const Index: React.FC = () => {
   );
 };
 
+const Test: React.FC = () => {
+  const { trigger, data } = useSWRMutation("/account", loginFetcher<{ token: string }>);
+
+  function test() {
+    trigger({ params: { account: "care1", password: "care" } });
+  }
+
+  return <p onClick={test}>{data?.token || "xxx"}</p>;
+};
+
 const AuthGithub: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -55,7 +67,8 @@ const AuthGithub: React.FC = () => {
 
 bootstrap(
   <>
+    <Route path="/test" element={<Test />} />
     <Route path="/auth/github" element={<AuthGithub />} />
     <Route path="/*" element={<Index />} />
-  </>
+  </>,
 );

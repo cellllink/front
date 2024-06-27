@@ -4,7 +4,7 @@ import { View } from "./component/view";
 import style from "./index.module.scss";
 
 // socket
-// const socket = io(EnvConfig.apiHost + "/demand");
+// const socket = io(EnvConfig.serverHost + "/demand");
 
 // socket.on("apply", (daya: any) => {
 //   console.log(daya);

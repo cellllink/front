@@ -1,6 +1,7 @@
 import { EnvConfig } from "@share/config/env.config";
-import { map, Observable } from "rxjs";
+import { firstValueFrom, map, Observable } from "rxjs";
 import { ajax, AjaxResponse } from "rxjs/ajax";
+import useSWRMutation from "swr/mutation";
 
 export type Params = Record<string, any>;
 
@@ -96,16 +97,14 @@ export class BaseHttpService {
 }
 
 export class ApiBaseHttpService extends BaseHttpService {
-  // constructor() {
-  //   super(EnvConfig.apiHost);
-  // }
-}
-
-class CommonServerHttpService extends BaseHttpService {
   protected host: string = EnvConfig.serverHost;
-  protected modulePrefix: string = "/common";
 }
 
-export const commonHttpService = new CommonServerHttpService();
+// class CommonServerHttpService extends BaseHttpService {
+//   protected host: string = EnvConfig.serverHost;
+//   protected modulePrefix: string = "/common";
+// }
+
+// export const commonHttpService = new CommonServerHttpService();
 
 // export const userInfo = () => commonHttpService.get("/user/info");

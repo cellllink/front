@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
 import { ConfigProviderTheme } from "./config/antd.config";
+import EscapeAntd from "./component/escapeAntd";
 
 dayjs.locale("zh-cn");
 
@@ -18,11 +19,12 @@ export function bootstrap(main: React.ReactNode) {
     // <React.StrictMode>
     <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
       <App>
+        <EscapeAntd />
         <HashRouter>
           <Routes>{main}</Routes>
         </HashRouter>
       </App>
-    </ConfigProvider>
+    </ConfigProvider>,
     // </React.StrictMode>
   );
 }

@@ -74,8 +74,10 @@ export const MetacssRules: ConfigBase["rules"] = [
   ["dp_ib", { display: "inline-block" }],
   // 宽
   [/^w_(\d+)$/, ([, d]) => ({ width: `${d}px` })],
+  [/^w_(\d+)vw$/, ([, d]) => ({ width: `${d}vw` })],
   // 高
   [/^h_(\d+)$/, ([, d]) => ({ height: `${d}px` })],
+  [/^h_(\d+)vh$/, ([, d]) => ({ height: `${d}vh` })],
   // 外边距
   [/^mg_(\d+)$/, ([, d]) => ({ margin: `${d}px` })],
   [/^mg-h_(\d+)$/, ([, d]) => ({ "margin-left": `${d}px`, "margin-right": `${d}px` })],
@@ -133,4 +135,9 @@ export const MetacssRules: ConfigBase["rules"] = [
   // 圆角
   [/^br_(\d+)$/, ([, d]) => ({ "border-radius": `${d}px` })],
   [/^br_(\d+)%$/, ([, d]) => ({ "border-radius": `${d}%` })],
+
+  // overflow
+  ["of-x_h", { "overflow-x": "hidden" }],
+  ["of-y_h", { "overflow-y": "hidden" }],
+  ["of_h", { "overflow-x": "hidden", "overflow-y": "hidden" }],
 ];

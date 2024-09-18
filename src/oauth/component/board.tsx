@@ -9,13 +9,10 @@ export function Board() {
         <IconFont type="icon-cell" className="fs_32" />
         <span className="mg-l_8 fs_24">Celllink</span>
       </div>
-
       <img src={EnvConfig.imageBaseUrl + "/image/oauth/signal.svg"} width={280} alt="" />
-
       <div className="mg-t_24 op_6">
         <div className="row-v_c">
           <IconFont type="icon-iphone" className="fs_16" />
-
           <span className="mg-l_6">18371031997</span>
         </div>
       </div>

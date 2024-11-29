@@ -28,11 +28,10 @@ lerna-debug.log*
 
 .env
 yarn.lock
-
+package-lock.json
 
 # Logs
 logs
 *.log
-
 
 /index.html

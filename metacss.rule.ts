@@ -75,9 +75,23 @@ export const MetacssRules: ConfigBase["rules"] = [
   // 宽
   [/^w_(\d+)$/, ([, d]) => ({ width: `${d}px` })],
   [/^w_(\d+)vw$/, ([, d]) => ({ width: `${d}vw` })],
+  [/^w_(\d+)%$/, ([, d]) => ({ width: `${d}%` })],
+  [/^min-w_(\d+)$/, ([, d]) => ({ "min-width": `${d}px` })],
+  [/^min-w_(\d+)vw$/, ([, d]) => ({ "min-width": `${d}vw` })],
+  [/^min-w_(\d+)%$/, ([, d]) => ({ "min-width": `${d}%` })],
+  [/^max-w_(\d+)$/, ([, d]) => ({ "max-width": `${d}px` })],
+  [/^max-w_(\d+)vw$/, ([, d]) => ({ "max-width": `${d}vw` })],
+  [/^max-w_(\d+)%$/, ([, d]) => ({ "max-width": `${d}%` })],
   // 高
   [/^h_(\d+)$/, ([, d]) => ({ height: `${d}px` })],
   [/^h_(\d+)vh$/, ([, d]) => ({ height: `${d}vh` })],
+  [/^h_(\d+)%$/, ([, d]) => ({ height: `${d}%` })],
+  [/^min-h_(\d+)$/, ([, d]) => ({ "min-height": `${d}px` })],
+  [/^min-h_(\d+)vh$/, ([, d]) => ({ "min-height": `${d}vh` })],
+  [/^min-h_(\d+)%$/, ([, d]) => ({ "min-height": `${d}%` })],
+  [/^max-h_(\d+)$/, ([, d]) => ({ "max-height": `${d}px` })],
+  [/^max-h_(\d+)vh$/, ([, d]) => ({ "max-height": `${d}vh` })],
+  [/^max-h_(\d+)%$/, ([, d]) => ({ "max-height": `${d}%` })],
   // 外边距
   [/^mg_(\d+)$/, ([, d]) => ({ margin: `${d}px` })],
   [/^mg-h_(\d+)$/, ([, d]) => ({ "margin-left": `${d}px`, "margin-right": `${d}px` })],

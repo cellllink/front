@@ -1,19 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { HashRouter } from "react-router-dom";
+import { Route } from "react-router-dom";
 
-const RootElement = document.getElementById("root");
-if (!RootElement) throw new Error('请在 public/index.html 的 body 中添加 <div id="root"></div>');
+import { bootstrap } from "@share/bootstrap";
+import { Header } from "./component/header";
 
-ReactDOM.createRoot(RootElement).render(
-  <React.StrictMode>
-    <HashRouter>
-      {/* <Switch>
-              <Route path="/auth" component={Auth}></Route>
-                <Route path="/space" component={Space}></Route>
-                <Route path="/share" component={Share}></Route>
-                <Redirect to="/space" />
-            </Switch> */}
-    </HashRouter>
-  </React.StrictMode>
+import "virtual:uno.css";
+import "@share/style/index.scss";
+
+function Index() {
+  return <Header></Header>;
+}
+
+bootstrap(
+  <>
+    <Route path="/*" element={<Index />} />
+  </>,
 );

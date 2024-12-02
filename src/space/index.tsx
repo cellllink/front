@@ -107,7 +107,7 @@ const Version = () => {
   return (
     <div className="version row_c_sb mg-h_8 br_t">
       <span>
-        <span className="fs_16 lh_24 fw">Celllink</span>
+        <span className="fs_16 lh_24 fw">Cellllink</span>
         <span className="mg-l_4 fs_12">v1.0.0</span>
       </span>
 

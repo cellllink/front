@@ -1,14 +1,15 @@
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+
 import { Params } from "@share/http/base.http.service";
-import { useByAccountMutation } from "@share/fetcher/oauth/register.fetcher";
 import { message } from "@share/component/escapeAntd";
+import { RegisterMutation } from "../mutation/register.mutation";
 
 export const RegisterForm: React.FC = () => {
   const [loginForm] = Form.useForm();
   const navigate = useNavigate();
-  const { trigger, isMutating } = useByAccountMutation();
+  const { trigger, isMutating } = RegisterMutation.byPassword();
 
   function onRegister(params: Params) {
     if (isMutating) return;

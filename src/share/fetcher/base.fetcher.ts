@@ -30,25 +30,21 @@ export interface FetcherOption {
 }
 
 function responseHandle<T>({ response }: AjaxResponse<IResponse<T>>, config: Record<string, any>) {
-  if (response.code !== 200) {
-    if (config.showErrorMessage !== false) message.error(response.message);
-    throw response.message;
-  }
-  return response.data;
+  const { code, message: responseMessage, data } = response;
+  if (code === 200) return data;
+
+  if (config.showErrorMessage !== false) message.error(responseMessage);
+  throw responseMessage;
 }
 
 // Fetcher
 export async function postFetcher<T>(url: string, option: FetcherOption) {
-  const { params, headers, config } = option.arg || {};
+  console.log(url);
 
-  return await firstValueFrom(
-    ajax<IResponse<T>>({
-      method: "POST",
-      url: EnvConfig.serverHost + url,
-      headers: headers || {},
-      body: params || {},
-    }).pipe(map((res) => responseHandle(res, config || {}))),
-  );
+  const { params: body = {}, headers = {}, config } = option.arg || {};
+  const ajaxConfig = { method: "POST", url, headers, body };
+
+  return await firstValueFrom(ajax<IResponse<T>>(ajaxConfig).pipe(map((res) => responseHandle(res, config || {}))));
 }
 
 export async function postQueryFetcher<T>(url: string, option: FetcherOption) {

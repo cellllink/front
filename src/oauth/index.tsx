@@ -23,9 +23,9 @@ const Index: React.FC = () => {
           {/* <span className="mg-t_6 mg-b_32 fs_18">简单、纯粹</span> */}
 
           <Routes>
-            <Route path="/" element={<LoginForm />} />
             <Route path="/register" element={<RegisterForm />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="/" element={<LoginForm />} /> */}
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
 
           {/* <Tripartite /> */}

@@ -1,25 +1,24 @@
 import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Params } from "@share/http/base.http.service";
 import { message } from "antd";
 import Cookies from "js-cookie";
-import { useByAccountMutation } from "@share/fetcher/oauth/login.fetcher";
+
+import { Params } from "@share/http/base.http.service";
 import { EnvConfig } from "@share/config/env.config";
+import { LoginMutation } from "../mutation/login.mutation";
 
 export const LoginForm: React.FC = () => {
   const [loginForm] = Form.useForm();
-  const { trigger, isMutating } = useByAccountMutation();
+  const { trigger, isMutating } = LoginMutation.byPassword();
 
   const onLogin = (params: Params) => {
     if (isMutating) return;
 
-    trigger({ params })
-      .then(({ token }) => {
-        message.success("登录成功");
-        Cookies.set("token", token);
-        window.location.replace(EnvConfig.spaceDomain);
-      })
-      .catch(() => {});
+    trigger({ params }).then(({ token }) => {
+      message.success("登录成功");
+      Cookies.set("token", token);
+      // window.location.replace(EnvConfig.spaceDomain);
+    });
   };
 
   return (

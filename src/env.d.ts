@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly VITE_SERVER_HOST: string;
+  readonly VITE_OAUTH_SERVER_HOST: string;
 
   readonly VITE_OAUTH_DOMAIN: string;
   readonly VITE_SPACE_DOMAIN: string;

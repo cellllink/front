@@ -17,10 +17,10 @@ const Index: React.FC = () => {
   return (
     <div className="w_100vw h_100vh of_h row_c_c">
       <div className="card row pd-h_32">
-        <Board />
+        {/* <Board /> */}
 
         <div className="column-v_c mg-l_40">
-          <span className="mg-t_6 mg-b_32 fs_18">简单、纯粹</span>
+          {/* <span className="mg-t_6 mg-b_32 fs_18">简单、纯粹</span> */}
 
           <Routes>
             <Route path="/" element={<LoginForm />} />

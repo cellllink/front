@@ -27,8 +27,8 @@ import { Splitter } from "antd";
 export default function Todo() {
   return (
     <Splitter>
-      <Splitter.Panel>1</Splitter.Panel>
-      <Splitter.Panel defaultSize="500" min="10%">
+      <Splitter.Panel min="400">1</Splitter.Panel>
+      <Splitter.Panel defaultSize="400" min="25%">
         1123
       </Splitter.Panel>
     </Splitter>

@@ -112,6 +112,16 @@ export const MetacssRules: ConfigBase["rules"] = [
   [/^pd-b_(\d+)$/, ([, d]) => ({ "padding-bottom": `${d}px` })],
   [/^pd-l_(\d+)$/, ([, d]) => ({ "padding-left": `${d}px` })],
   [/^pd-r_(\d+)$/, ([, d]) => ({ "padding-right": `${d}px` })],
+  // 隐藏 滚动
+  ["of_h", { overflow: "hidden" }],
+  ["of_s", { overflow: "scroll" }],
+  ["of_a", { overflow: "auto" }],
+  ["of-x_h", { "overflow-x": "hidden" }],
+  ["of-x_s", { "overflow-x": "scroll" }],
+  ["of-x_a", { "overflow-x": "auto" }],
+  ["of-y_h", { "overflow-y": "hidden" }],
+  ["of-y_s", { "overflow-y": "scroll" }],
+  ["of-y_a", { "overflow-y": "auto" }],
 
   /* 色彩风格 */
   // 颜色

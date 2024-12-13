@@ -1,10 +1,10 @@
 export const EnvConfig = {
   serverHost: import.meta.env.VITE_SERVER_HOST,
 
-  oauthServerHost: import.meta.env.VITE_OAUTH_SERVER_HOST,
+  serverHostOauth: import.meta.env.VITE_SERVER_HOST_OAUTH,
 
-  oauthDomain: import.meta.env.VITE_OAUTH_DOMAIN,
-  spaceDomain: import.meta.env.VITE_SPACE_DOMAIN,
+  domainOauth: import.meta.env.VITE_DOMAIN_OAUTH,
+  domainSpace: import.meta.env.VITE_DOMAIN_SPACE,
   manageDomain: import.meta.env.VITE_MANAGE_DOMAIN,
   websiteDomain: import.meta.env.VITE_WEBSITE_DOMAIN,
   githubClientId: import.meta.env.VITE_GITHUB_CLIENT_ID,

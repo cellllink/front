@@ -1,23 +1,24 @@
-import { IconFont } from "@share/component/iconfont";
-import { EnvConfig } from "@share/config/env.config";
 import { Button } from "antd";
 import { Link, useLocation } from "react-router-dom";
 
-export const Tripartite: React.FC = () => {
-  function goToGithubAuth() {
-    window.location.replace(
-      `https://github.com/login/oauth/authorize?client_id=${EnvConfig.githubClientId}&redirect_uri=${EnvConfig.oauthDomain}/#/auth/github`
-    );
-  }
+import { IconFont } from "@share/component/iconfont";
+import { EnvConfig } from "@share/config/env.config";
 
-  let location = useLocation();
+export const Tripartite: React.FC = () => {
+  const location = useLocation();
+
+  // function goToGithubAuth() {
+  //   window.location.replace(
+  //     `https://github.com/login/oauth/authorize?client_id=${EnvConfig.githubClientId}&redirect_uri=${EnvConfig.oauthDomain}/#/auth/github`,
+  //   );
+  // }
 
   const test = () => {};
 
   return (
-    <div className="row_c_sb mg-t_16">
-      <div className="row cs_p">
-        <div className="mg-r_8">
+    <div className="w_100% row_c_sb mg-t_16">
+      <div className="flex1 row cs_p">
+        {/* <div className="mg-r_8">
           <IconFont type="icon-weixin" className="fs_24" />
         </div>
         <div className="mg-r_8" onClick={test}>
@@ -31,10 +32,10 @@ export const Tripartite: React.FC = () => {
         </div>
         <div className="mg-r_8" onClick={goToGithubAuth}>
           <IconFont type="icon-github" className="fs_24" />
-        </div>
+        </div> */}
       </div>
 
-      <Button className="pd-l_48 pd-r_0 fs_12" type="link">
+      <Button className="fs_12" type="link">
         <Link to={location.pathname === "/" ? "/register" : "/"}>{location.pathname === "/" ? "去注册" : "去登录"}</Link>
       </Button>
     </div>

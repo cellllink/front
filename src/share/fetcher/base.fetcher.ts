@@ -39,8 +39,6 @@ function responseHandle<T>({ response }: AjaxResponse<IResponse<T>>, config: Rec
 
 // Fetcher
 export async function postFetcher<T>(url: string, option: FetcherOption) {
-  console.log(url);
-
   const { params: body = {}, headers = {}, config } = option.arg || {};
   const ajaxConfig = { method: "POST", url, headers, body };
 

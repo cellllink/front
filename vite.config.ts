@@ -27,6 +27,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: "index.html",
+      output: {
+        dir: `dist/${project}`,
+      },
     },
   },
   resolve: {

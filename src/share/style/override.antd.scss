@@ -1,12 +1,17 @@
+// ant-menu
 .ant-menu {
   border-inline-end: none !important;
 }
 
-.ant-table-tbody-virtual-scrollbar {
-  width: 6px !important;
-  height: 6px !important;
-}
-.ant-table-tbody-virtual-scrollbar-thumb {
-  border-radius: 4px !important;
-  background-color: #cccccc !important;
+// ant-table
+.ant-table {
+  &-tbody-virtual-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+
+  &-tbody-virtual-scrollbar-thumb {
+    border-radius: 4px !important;
+    background-color: #cccccc !important;
+  }
 }

@@ -38,7 +38,7 @@ export function MenuList() {
         <span className="mg-l_8 fs_18 fw">Cellllink</span>
       </div>
 
-      <div className="h_100% pd-t_48">
+      <div className="h_100% pd-t_44">
         <Menu defaultSelectedKeys={defaultSelectedKeys} mode="inline" items={menuitems} />
       </div>
     </div>
@@ -50,12 +50,13 @@ export function Header() {
     <div className="h_48 pd-h_16 row_c_sb">
       <div></div>
       <div className="row-v_c">
-        <div className="pd_4 mg-r_4 hr">
-          <SettingOutlined className="pt_r t_2 fs_20" />
+        <div className="row-v_c pd_4 hr">
+          <span className="google-icon fs_24">settings</span>
         </div>
-        <div className="pd_4 mg-r_8 hr">
-          <Badge count={5} size="small">
-            <BellOutlined className="pt_r t_2 fs_20" />
+        <div className="row-v_c pd_4 mg-r_8 hr">
+          <Badge count={0} size="small">
+            {/*<span className="google-icon fs_24">notifications</span>*/}
+            <span className="google-icon fs_24">notifications_active</span>
           </Badge>
         </div>
         <img className="w_32 br_50%" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
@@ -67,11 +68,13 @@ export function Header() {
 export default function Workstation() {
   return (
     <div className="bg_ffffff w_100vw h_100vh of_h row">
-      <div className="w_144 h_100%">{/*<MenuList></MenuList>*/}</div>
+      <div className="w_136 h_100%">
+        <MenuList></MenuList>
+      </div>
 
-      <div className="h_100%" style={{ width: "calc(100vw - 144px)" }}>
+      <div className="h_100%" style={{ width: "calc(100vw - 136px)" }}>
         <Header></Header>
-        <div className="of_h br_8 br_t br_l" style={{ height: "calc(100% - 48px)" }}>
+        <div className="of_h br-tl_8 br_t br_l bg_f4f6f9" style={{ height: "calc(100% - 48px)" }}>
           <Routes>
             <Route path="todo" element={<Todo />} />
           </Routes>

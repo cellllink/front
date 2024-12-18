@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Google Icon';
+  font-style: normal;
+  src: url(/fonts/index.woff2) format('woff2');
+}
+
+.google-icon {
+  font-family: 'Google Icon';
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}

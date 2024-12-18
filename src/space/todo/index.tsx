@@ -22,19 +22,15 @@
 //   );
 // }
 
-import { Splitter } from "antd";
 import { Group } from "./component/group.tsx";
+import { Board } from "./component/board.tsx";
 
 export default function Todo() {
   return (
-    <Splitter>
-      <Splitter.Panel size={200} resizable={false}>
-        <Group></Group>
-      </Splitter.Panel>
-      <Splitter.Panel min="400">1</Splitter.Panel>
-      <Splitter.Panel defaultSize="400" min="25%">
-        1123
-      </Splitter.Panel>
-    </Splitter>
+    <div className="h_100% row">
+      <Group></Group>
+
+      <Board></Board>
+    </div>
   );
 }

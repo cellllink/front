@@ -159,6 +159,14 @@ export const MetacssRules: ConfigBase["rules"] = [
   // 圆角
   [/^br_(\d+)$/, ([, d]) => ({ "border-radius": `${d}px` })],
   [/^br_(\d+)%$/, ([, d]) => ({ "border-radius": `${d}%` })],
+  [/^br-tl_(\d+)$/, ([, d]) => ({ "border-top-left-radius": `${d}px` })],
+  [/^br_tl(\d+)%$/, ([, d]) => ({ "border-top-left-radius": `${d}%` })],
+  [/^br_tr(\d+)$/, ([, d]) => ({ "border-top-right-radius": `${d}px` })],
+  [/^br_tr(\d+)%$/, ([, d]) => ({ "border-top-right-radius": `${d}%` })],
+  [/^br_bl(\d+)$/, ([, d]) => ({ "border-bottom-left-radius": `${d}px` })],
+  [/^br_bl(\d+)%$/, ([, d]) => ({ "border-bottom-left-radius": `${d}%` })],
+  [/^br_br(\d+)$/, ([, d]) => ({ "border-bottom-right-radius": `${d}px` })],
+  [/^br_br(\d+)%$/, ([, d]) => ({ "border-bottom-right-radius": `${d}%` })],
 
   // overflow
   ["of-x_h", { "overflow-x": "hidden" }],

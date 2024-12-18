@@ -1,13 +1,35 @@
-import { CheckOutlined } from "@ant-design/icons";
+import { SunOutlined, AimOutlined, AlertOutlined } from "@ant-design/icons";
+import { Menu, MenuProps } from "antd";
+import { getMenuItem } from "@share/util/antd.util.ts";
 
 export function Group() {
+  const menuitems: MenuProps["items"] = [
+    getMenuItem(
+      <div className="row-v_c">
+        <span className="google-icon fs_20 mg-r_8">sunny</span>
+        我的一天
+      </div>,
+      "sunny",
+    ),
+    getMenuItem(
+      <div className="row-v_c">
+        <span className="google-icon fs_20 mg-r_8">flag</span>
+        重要
+      </div>,
+      "flag",
+    ),
+    getMenuItem(
+      <div className="row-v_c">
+        <span className="google-icon fs_20 mg-r_8">box</span>
+        收集箱
+      </div>,
+      "box",
+    ),
+  ];
+
   return (
-    <>
-      <div className="br br_8 mg-h_8 mg-t_8 cs_p">
-        <div className="pd_8 row-v_c br_b hr">我的一天</div>
-        <div className="pd_8 row-v_c br_b hr">重要</div>
-        <div className="pd_8 row-v_c hr">收集箱</div>
-      </div>
-    </>
+    <div className="w_136 br_r">
+      <Menu mode="inline" items={menuitems} />
+    </div>
   );
 }

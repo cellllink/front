@@ -15,3 +15,9 @@
     background-color: #cccccc !important;
   }
 }
+
+// ant-splitter
+
+.ant-splitter-horizontal > .ant-splitter-bar .ant-splitter-bar-dragger::before {
+  width: 1px;
+}

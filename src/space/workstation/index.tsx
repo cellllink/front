@@ -1,6 +1,5 @@
 import { Route, Routes, Link, useLocation } from "react-router-dom";
 import { Badge, Menu, MenuProps, Popover, Tag } from "antd";
-import { TwitterOutlined } from "@ant-design/icons";
 import loadable from "@loadable/component";
 
 import { EnvConfig } from "@share/config/env.config";
@@ -14,14 +13,16 @@ function UserBelong() {
   const names = ["啊手机打", "贾老师的", "贾老师的", "贾老师的"];
   // const names = ["啊手机打", "贾老师的"];
 
-  const onChoose = () => location.reload();
+  const tag = (title: string) => {
+    const onChoose = () => location.reload();
 
-  const tag = (title: string) => (
-    <div className="row-v_c pd-v_2 pd-h_4 br br_4 hr cs_p" onClick={onChoose}>
-      <img className="dp_i w_20 mg-r_4 br_50%" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
-      <span>{title}</span>
-    </div>
-  );
+    return (
+      <div className="row-v_c pd-v_2 pd-h_4 br br_4 hr cs_p" onClick={onChoose}>
+        <img className="dp_i w_20 mg-r_4 br_50%" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
+        <span>{title}</span>
+      </div>
+    );
+  };
 
   const create = (
     <div className="row-v_c pd-v_2 pd-h_18 br br_4 hr cs_p">

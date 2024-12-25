@@ -27,10 +27,15 @@ import { Board } from "./component/board.tsx";
 
 export default function Todo() {
   return (
-    <div className="h_100% row">
-      <Group></Group>
+    <div className="h_100% row-h_sb">
+      <div className="w_134 br_r">
+        <Group></Group>
+      </div>
 
-      <Board></Board>
+      {/* 134 + 1 + 8 */}
+      <div style={{ width: "calc(100% - 135px)" }}>
+        <Board></Board>
+      </div>
     </div>
   );
 }

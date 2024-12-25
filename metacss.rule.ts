@@ -64,8 +64,37 @@ export const MetacssRules: ConfigBase["rules"] = [
       "justify-content": FlexKeyValues[h as FlexKey],
     }),
   ],
-  ["flex-wp_w", { "flex-wrap": "wrap" }],
-  ["flex-wp_wr", { "flex-wrap": "wrap-reverse" }],
+  ["row-wp_w", { "flex-wrap": "wrap" }],
+  ["row-wp_wr", { "flex-wrap": "wrap-reverse" }],
+  [/^row-gap_(\d+)$/, ([, d]) => ({ "row-gap": `${d}px` })],
+  [
+    /^column-h_(sb|sa|bl|sh|s|c|e)/,
+    ([, d]) => ({
+      display: "flex",
+      "flex-direction": "column",
+      "justify-content": FlexKeyValues[d as FlexKey],
+    }),
+  ],
+  [
+    /^column-v_(sb|sa|bl|sh|s|c|e)/,
+    ([, d]) => ({
+      display: "flex",
+      "flex-direction": "column",
+      "align-items": FlexKeyValues[d as FlexKey],
+    }),
+  ],
+  [
+    /^column_(sb|sa|bl|sh|s|c|e)_(sb|sa|bl|sh|s|c|e)/,
+    ([, v, h]) => ({
+      display: "flex",
+      "flex-direction": "column",
+      "align-items": FlexKeyValues[v as FlexKey],
+      "justify-content": FlexKeyValues[h as FlexKey],
+    }),
+  ],
+  ["column-wp_w", { "flex-wrap": "wrap" }],
+  ["column-wp_wr", { "flex-wrap": "wrap-reverse" }],
+  [/^column-gap_(\d+)$/, ([, d]) => ({ "column-gap": `${d}px` })],
   [/^flex_(\d+)$/, ([, d]) => ({ flex: `${d}` })],
 
   /* 盒模型 */

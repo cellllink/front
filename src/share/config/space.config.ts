@@ -4,6 +4,11 @@ export const Apps = [
     path: "/workstation/todo",
     name: "代办清单",
   },
+  {
+    icon: "defect",
+    path: "/workstation/defect",
+    name: "缺陷管理",
+  },
 
   // {
   //   to: "organization",
@@ -24,10 +29,6 @@ export const Apps = [
   // {
   //   to: "defect",
   //   name: "缺陷管理",
-  // },
-  // {
-  //   to: "todo",
-  //   name: "代办清单",
   // },
   // {
   //   to: "schedule",

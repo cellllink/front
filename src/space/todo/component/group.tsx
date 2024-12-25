@@ -28,7 +28,7 @@ export function Group() {
   ];
 
   return (
-    <div className="w_136 br_r">
+    <div className="card">
       <Menu mode="inline" items={menuitems} />
     </div>
   );

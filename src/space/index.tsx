@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import { bootstrap } from "@share/bootstrap";
 
-import Workstation from "./workstation";
+import { Workstation } from "./workstation";
 
 bootstrap(
   <Routes>

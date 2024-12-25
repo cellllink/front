@@ -1,23 +1,23 @@
-import { Drawer } from "antd";
-import { useState } from "react";
+import { Table } from "antd";
+import { useRef, useState } from "react";
+import { DetailDrawer } from "./detailDrawer.tsx";
 
 export function Board() {
   const [open, setOpen] = useState(false);
 
+
   return (
-    <div className="pt_r w_100%">
+    <div className="pt_r pd_4 w_100% h_100%">
       <div onClick={() => setOpen(!open)}>123</div>
-      <Drawer
-        title="Basic Drawer"
-        placement="right"
-        autoFocus={false}
-        mask={false}
-        onClose={() => setOpen(false)}
-        open={open}
-        getContainer={false}
-      >
-        <p>Some contents...</p>
-      </Drawer>
+
+      <div className="card">
+        <Table dataSource={[]}>
+          <Table.Column title="First Name" dataIndex="firstName" key="firstName" />
+          <Table.Column title="Age" dataIndex="age" key="age" />
+        </Table>
+      </div>
+
+      <DetailDrawer />
     </div>
   );
 }

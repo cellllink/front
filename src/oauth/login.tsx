@@ -5,11 +5,11 @@ import Cookies from "js-cookie";
 
 import { message } from "@share/component/escapeAntd";
 import { Params } from "@share/http/base.http.service";
-import { EnvConfig } from "@share/config/env.config";
 
 import { Board } from "./component/board";
 import { Tripartite } from "./component/tripartite";
 import { LoginMutation } from "./mutation/login.mutation";
+import { systemNavigate } from "@share/util/domain.util";
 
 export const Login: React.FC = () => {
   const [loginForm] = Form.useForm();
@@ -21,13 +21,13 @@ export const Login: React.FC = () => {
     trigger({ params }).then(({ token }) => {
       message.success("登录成功");
       Cookies.set("token", token);
-      window.location.replace(EnvConfig.domainSpace);
+      systemNavigate("space");
     });
   };
 
   return (
-    <div className="w_100vw h_100vh of_h row_c_c">
-      <div className="card row pd-h_32">
+    <div className="w_100vw h_100vh of_h row_c_c bg_f4f6f9">
+      <div className="br_8 of_h bg_ffffff row pd-h_32 pd-v_24">
         <Board />
         <div className="column-v_c mg-l_40">
           <span className="mg-t_6 mg-b_32 fs_18">简单、纯粹</span>

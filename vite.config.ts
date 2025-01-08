@@ -2,6 +2,9 @@ import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import UnoCSS from "unocss/vite";
+import { createHtmlPlugin } from "vite-plugin-html";
+
+const resolve = (dir) => path.join(__dirname, dir);
 
 function getProcessArgv(): Record<string, any> {
   const options = {};
@@ -23,6 +26,9 @@ console.log("即将打包：" + project);
 export default defineConfig({
   server: {
     port,
+    hmr: {
+      // overlay: false,
+    },
   },
   build: {
     rollupOptions: {
@@ -34,8 +40,22 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@share": path.resolve(__dirname, "./src/share"),
+      "@share": resolve("./src/share"),
     },
   },
-  plugins: [UnoCSS(), react()],
+  plugins: [
+    UnoCSS(),
+    react(),
+    createHtmlPlugin({
+      minify: true,
+      entry: `src/${project}/index.tsx`,
+      template: "index.html",
+      inject: {
+        data: {
+          title: project,
+          injectScript: `<script type="module" src="/src/${project}/index.tsx"></script>`,
+        },
+      },
+    }),
+  ],
 });

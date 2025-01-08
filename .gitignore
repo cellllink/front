@@ -35,5 +35,3 @@ package-lock.json
 # Logs
 logs
 *.log
-
-/index.html

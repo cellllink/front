@@ -1,35 +1,26 @@
-import { SunOutlined, AimOutlined, AlertOutlined } from "@ant-design/icons";
-import { Menu, MenuProps } from "antd";
-import { getMenuItem } from "@share/util/antd.util.ts";
+import { Radio } from "antd";
 
-export function Group() {
-  const menuitems: MenuProps["items"] = [
-    getMenuItem(
-      <div className="row-v_c">
-        <span className="google-icon fs_20 mg-r_8">sunny</span>
-        我的一天
-      </div>,
-      "sunny",
-    ),
-    getMenuItem(
-      <div className="row-v_c">
-        <span className="google-icon fs_20 mg-r_8">flag</span>
-        重要
-      </div>,
-      "flag",
-    ),
-    getMenuItem(
-      <div className="row-v_c">
-        <span className="google-icon fs_20 mg-r_8">box</span>
-        收集箱
-      </div>,
-      "box",
-    ),
-  ];
-
+function RadioButtons() {
   return (
-    <div className="card">
-      <Menu mode="inline" items={menuitems} />
+    <div className="h_34 row-v_c">
+      <Radio.Group block defaultValue="sunny" buttonStyle="solid">
+        {[
+          { name: "一天", key: "sunny" },
+          { name: "重要", key: "flag" },
+          { name: "收集", key: "box" },
+        ].map((item) => (
+          <Radio.Button value={item.key}>
+            <div className="row_c_c">
+              <span className="google-icon fs_16 mg-r_4">{item.key}</span>
+              {item.name}
+            </div>
+          </Radio.Button>
+        ))}
+      </Radio.Group>
     </div>
   );
+}
+
+export function Group() {
+  return <RadioButtons></RadioButtons>;
 }

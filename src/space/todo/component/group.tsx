@@ -3,7 +3,7 @@ import { Radio } from "antd";
 function RadioButtons() {
   return (
     <div className="h_34 row-v_c">
-      <Radio.Group block defaultValue="sunny" buttonStyle="solid">
+      {/* <Radio.Group block defaultValue="sunny" buttonStyle="solid">
         {[
           { name: "一天", key: "sunny" },
           { name: "重要", key: "flag" },
@@ -16,7 +16,7 @@ function RadioButtons() {
             </div>
           </Radio.Button>
         ))}
-      </Radio.Group>
+      </Radio.Group> */}
     </div>
   );
 }

@@ -1,21 +1,40 @@
-import { Table } from "antd";
+import { Dropdown, Table } from "antd";
 import { useRef, useState } from "react";
+
+import { getMenuItem } from "@share/util/antd.util.ts";
+
 import { DetailDrawer } from "./detailDrawer.tsx";
 
 function ViewGroup() {
+  const groups = ["设置", "安师大", "氨基酸的快乐", "安1师大"];
+  const [groupId, setGroupId] = useState(1);
+
+  const items = [getMenuItem("创建副本", "other"), getMenuItem("重命名", "rename"), getMenuItem("删除", "remove")];
+
   return (
-    <div className="h_34 pd-h_8 row-v_c br_b">
-      <div className="row-v_c pd-v_4 pd-h_2 hr">
-        <span className="google-icon fs_16 mg-r_4">settings</span>
-        设置
-      </div>
+    <div className="h_34 row-v_c br_b">
+      {groups.map((title, index) => (
+        <Dropdown menu={{ items }} trigger={["contextMenu"]}>
+          <div className={"row-v_c mg-r_4 pd-v_2 pd-h_4 hr " + (index === groupId ? "hovered" : "")} onClick={() => setGroupId(index)}>
+            <span className="google-icon fs_16 mg-r_4">table_chart</span>
+            {title}
+            {index === groupId && (
+              <Dropdown menu={{ items }} trigger={["click"]}>
+                <div className="row_c_c mg-l_2 pd-v_2 hr">
+                  <span className="google-icon fs_14">more_vert</span>
+                </div>
+              </Dropdown>
+            )}
+          </div>
+        </Dropdown>
+      ))}
     </div>
   );
 }
 
 function ViewFilter() {
   return (
-    <div className="h_34 pd-h_8 row-v_c br_b">
+    <div className="h_34 row-v_c br_b">
       <div className="row-v_c pd-v_4 pd-h_2 hr">
         <span className="google-icon fs_16 mg-r_4">settings</span>
         设置

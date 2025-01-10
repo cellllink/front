@@ -88,14 +88,14 @@ function MenuList() {
         </Popover>
       </div>
 
-      <div className="h_100% pd-t_44 column-h_sb">
+      {/* <div className="h_100% pd-t_44 column-h_sb">
         <Menu defaultSelectedKeys={defaultSelectedKeys} mode="inline" items={menuitems} />
 
         <div className="row-v_c pd_8">
           <img className="w_32 br_50% mg-r_8" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
           <span className="fs_14">哈哈哈</span>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

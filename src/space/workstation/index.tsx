@@ -36,7 +36,7 @@ function UserBelong() {
       <div>
         <p className="c_6">个人</p>
         <div className="max-w_254 mg-t_4 row row-wp_w row-gap_4 column-gap_4">
-          {names.map(tag)}
+          {/* {names.map(tag)} */}
           {create}
         </div>
       </div>
@@ -44,7 +44,7 @@ function UserBelong() {
       <div className="mg-t_8">
         <p className="c_6">团队</p>
         <div className="max-w_254 mg-t_4 row row-wp_w row-gap_4 column-gap_4">
-          {names.map(tag)}
+          {/* {names.map(tag)} */}
           {create}
         </div>
       </div>
@@ -52,7 +52,7 @@ function UserBelong() {
       <div className="mg-t_8">
         <p className="c_6">组织</p>
         <div className="max-w_254 mg-t_4 row row-wp_w row-gap_4 column-gap_4">
-          {names.map(tag)}
+          {/* {names.map(tag)} */}
           {create}
         </div>
       </div>
@@ -82,7 +82,7 @@ function MenuList() {
         <Popover placement="bottomLeft" trigger="click" title={null} content={UserBelong}>
           <div className="row_c_c cs_p">
             <img className="w_32 mg-r_8 br_50%" src="https://pic1.zhimg.com/80/v2-bc289813cc969875fb65d905ef9c8261_720w.webp" alt="" />
-            <span className="fs_16">安师大大</span>
+            <span className="fs_16">asd</span>
             <span className="google-icon fs_20">arrow_drop_down</span>
           </div>
         </Popover>

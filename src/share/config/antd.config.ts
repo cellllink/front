@@ -1,6 +1,7 @@
 import { ThemeConfig, theme } from "antd";
 
 export const ConfigProviderTheme: ThemeConfig = {
+  // cssVar: true,
   hashed: false,
   token: {},
   algorithm: [theme.compactAlgorithm], // 默认紧凑

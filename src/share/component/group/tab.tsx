@@ -1,4 +1,5 @@
-import { Dropdown } from "antd";
+import { ChangeEventHandler, useState } from "react";
+import { Dropdown, Input, MenuProps } from "antd";
 
 import { GroupPo } from "@share/swr/group.swr.ts";
 import { getMenuItem } from "@share/util/antd.util.ts";
@@ -12,7 +13,21 @@ interface IGroupProp {
   onChangeCurrentGroupId: (groupId: number) => void;
   onMoreVertClick: (key: string) => void;
 }
-export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, onMoreVertClick }: IGroupProp) {
+export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, ...rest }: IGroupProp) {
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [newGroupName, setNewGroupName] = useState(group.name);
+  const onMoreVertClick: MenuProps["onClick"] = ({ domEvent, key }) => {
+    domEvent.stopPropagation();
+    domEvent.nativeEvent.stopImmediatePropagation();
+    rest.onMoreVertClick(key);
+
+    if (key === "rename") setIsEditMode(true);
+  };
+  const onEditInputBlur = () => {};
+  const onEditInputChange = (groupName: string) => {
+    setNewGroupName(groupName);
+  };
+
   const MoreVert = (
     <Dropdown menu={{ items: GroupDropdownMenus, onClick: onMoreVertClick }} trigger={["click"]}>
       <div className="row_c_c mg-l_2 pd-v_2 hr">
@@ -22,14 +37,27 @@ export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, onMoreVe
   );
 
   return (
-    <Dropdown menu={{ items: GroupDropdownMenus, onClick: ({ key }) => onMoreVertClick(key) }} trigger={["contextMenu"]}>
+    <Dropdown menu={{ items: GroupDropdownMenus, onClick: onMoreVertClick }} trigger={["contextMenu"]}>
       <div
         className={["row-v_c pd-v_2 pd-h_4 bg_ffffff br_4 hr", isCurrent && "hred", !isLast && "mg-r_4"].join(" ")}
         onClick={() => onChangeCurrentGroupId(group.id)}
       >
         <span className="google-icon fs_16 mg-r_4">table_chart</span>
-        {group.name}
-        {isCurrent && MoreVert}
+        {isEditMode ? (
+          <Input
+            placeholder="请输入"
+            variant="borderless"
+            className="w_100 pd_0"
+            value={newGroupName}
+            onBlur={onEditInputBlur}
+            // onChange={onEditInputChange}
+          />
+        ) : (
+          <>
+            {group.name}
+            {isCurrent && MoreVert}
+          </>
+        )}
       </div>
     </Dropdown>
   );

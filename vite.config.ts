@@ -18,10 +18,7 @@ function getProcessArgv(): Record<string, any> {
 const args = getProcessArgv();
 const { port, project } = args;
 
-console.log("即将打包：" + project);
-
-// 复制 index.html
-// TODO
+console.log(`即将打包：${project}，端口：${port}`);
 
 export default defineConfig({
   server: {

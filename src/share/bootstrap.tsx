@@ -5,6 +5,7 @@ import { ConfigProvider, App } from "antd";
 import dayjs from "dayjs";
 import zhCN from "antd/locale/zh_CN";
 import "dayjs/locale/zh-cn";
+import { NuqsAdapter } from "nuqs/adapters/react";
 
 import { ConfigProviderTheme } from "./config/antd.config";
 import EscapeAntd from "./component/escapeAntd";
@@ -19,11 +20,13 @@ export function bootstrap(routes: React.ReactElement) {
   if (!RootElement) throw new Error('请在 public/index.html 的 body 中添加 <div id="root"></div>');
 
   ReactDOM.createRoot(RootElement).render(
-    <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
-      <App>
-        <EscapeAntd />
-        <BrowserRouter>{routes}</BrowserRouter>
-      </App>
-    </ConfigProvider>,
+    <NuqsAdapter>
+      <ConfigProvider locale={zhCN} theme={ConfigProviderTheme}>
+        <App>
+          <EscapeAntd />
+          <BrowserRouter>{routes}</BrowserRouter>
+        </App>
+      </ConfigProvider>
+    </NuqsAdapter>,
   );
 }

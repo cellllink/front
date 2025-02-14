@@ -18,7 +18,8 @@
   "dependenciesWebSite": {
     "nuqs": "https://nuqs.47ng.com",
     "swr": "https://swr.vercel.app/zh-CN",
-    "typeorm": "https://www.typeorm.org"
+    "typeorm": "https://www.typeorm.org",
+    "bignumberjs": "https://mikemcl.github.io/bignumber.js"
   },
   "dependencies": {
     "@loadable/component": "^5.16.4",

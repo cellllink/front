@@ -1,7 +1,7 @@
-import { ChangeEventHandler, useState } from "react";
-import { Dropdown, Input, MenuProps } from "antd";
+import { ChangeEvent, useState } from "react";
+import { Dropdown, Input, MenuProps, Typography } from "antd";
 
-import { GroupPo } from "@share/swr/group.swr.ts";
+import { GroupPo, GroupSwr } from "@share/swr/group.swr.ts";
 import { getMenuItem } from "@share/util/antd.util.ts";
 
 const GroupDropdownMenus = [getMenuItem("创建副本", "copy"), getMenuItem("重命名", "rename"), getMenuItem("删除", "remove")];
@@ -16,16 +16,40 @@ interface IGroupProp {
 export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, ...rest }: IGroupProp) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [newGroupName, setNewGroupName] = useState(group.name);
+  const { trigger: editTrigger, isMutating: editIsMutating } = GroupSwr.edit();
+
   const onMoreVertClick: MenuProps["onClick"] = ({ domEvent, key }) => {
     domEvent.stopPropagation();
     domEvent.nativeEvent.stopImmediatePropagation();
-    rest.onMoreVertClick(key);
 
-    if (key === "rename") setIsEditMode(true);
+    if (key === "rename") {
+      setIsEditMode(true);
+      return;
+    }
+
+    rest.onMoreVertClick(key);
   };
-  const onEditInputBlur = () => {};
-  const onEditInputChange = (groupName: string) => {
-    setNewGroupName(groupName);
+  const cancelEdit = () => {
+    setNewGroupName(group.name);
+    setIsEditMode(false);
+  };
+  const onEditInputBlur = () => {
+    if (!newGroupName || !newGroupName.trim() || newGroupName.trim() === group.name) {
+      cancelEdit();
+      return;
+    }
+
+    setIsEditMode(false);
+    editTrigger({
+      params: {
+        owner_uuid: group.owner_uuid,
+        id: group.id,
+        name: newGroupName.trim(),
+      },
+    }).then(() => rest.onMoreVertClick("rename"));
+  };
+  const onEditInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewGroupName(e.target.value);
   };
 
   const MoreVert = (
@@ -48,13 +72,20 @@ export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, ...rest 
             placeholder="请输入"
             variant="borderless"
             className="w_100 pd_0"
+            autoFocus
             value={newGroupName}
+            onChange={onEditInputChange}
             onBlur={onEditInputBlur}
-            // onChange={onEditInputChange}
+            onKeyDown={(e) => {
+              if (e.key !== "Enter") return;
+              onEditInputBlur();
+            }}
           />
         ) : (
           <>
-            {group.name}
+            <Typography.Paragraph ellipsis className="max-w_120" style={{ marginBottom: 0 }} title={newGroupName}>
+              {newGroupName}
+            </Typography.Paragraph>
             {isCurrent && MoreVert}
           </>
         )}

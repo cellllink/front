@@ -14,6 +14,8 @@ export const GroupSwr = {
 
   move: () => useSWRMutation(hostPath("common", "/group/move"), MutationFetcher<void>),
 
+  edit: () => useSWRMutation(hostPath("common", "/group/edit"), MutationFetcher<void>),
+
   remove: () => useSWRMutation(hostPath("common", "/group/remove"), MutationFetcher<void>),
 };
 

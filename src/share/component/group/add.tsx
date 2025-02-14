@@ -1,6 +1,7 @@
-import { Dropdown } from "antd";
+import { Dropdown, MenuProps } from "antd";
 
 import { getMenuItem } from "@share/util/antd.util";
+import { GroupSwr } from "@share/swr/group.swr";
 
 const AddDropdownMenus = [
   getMenuItem(
@@ -18,8 +19,12 @@ const AddDropdownMenus = [
 ];
 
 export function Add() {
+  const { trigger: createTrigger, isMutating: createIsMutating } = GroupSwr.create();
+
+  const onAddClick: MenuProps["onClick"] = ({ key }) => {};
+
   return (
-    <Dropdown menu={{ items: AddDropdownMenus }} trigger={["click"]}>
+    <Dropdown menu={{ items: AddDropdownMenus, onClick: onAddClick }} trigger={["click"]}>
       <div className="pd_4 row_c_c hr">
         <span className="google-icon fs_16">add</span>
       </div>

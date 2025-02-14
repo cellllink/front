@@ -38,8 +38,7 @@ export function GroupTab(prop: IViewGroupProp) {
       }).then(() => listMutate());
     }
 
-    if (key === "rename") {
-    }
+    if (key === "rename") listMutate();
 
     if (key === "remove") {
       // 删除的是当前视图，设置第一个分组为当前视图

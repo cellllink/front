@@ -22,18 +22,17 @@
 //   );
 // }
 
-import { Group } from "./component/group.tsx";
+import { Left } from "./component/left.tsx";
 import { Board } from "./component/board.tsx";
 
 export default function Todo() {
   return (
-    <div className="h_100% row-h_sb">
-      <div className="w_188 pd-h_4 br_r">
-        <Group></Group>
-      </div>
+    <div className="h_100% row">
+      <Left></Left>
 
       {/* 134 + 1 + 8 */}
-      <div style={{ width: "calc(100% - 188px)" }}>
+      {/* style={{ width: `calc(100% - ${leftContentWidth})` }} */}
+      <div className="flex_1">
         <Board></Board>
       </div>
     </div>

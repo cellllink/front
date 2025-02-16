@@ -47,6 +47,16 @@
   border-radius: 4px;
   cursor: pointer;
 }
+.hr-dp_b {
+  .hr {
+    display: none;
+  }
+  &:hover {
+    .hr {
+      display: block;
+    }
+  }
+}
 
 @keyframes skeleton-loading {
   0% {

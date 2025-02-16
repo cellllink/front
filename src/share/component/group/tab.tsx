@@ -9,11 +9,10 @@ const GroupDropdownMenus = [getMenuItem("创建副本", "copy"), getMenuItem("�
 interface IGroupProp {
   group: GroupPo;
   isCurrent: boolean;
-  isLast: boolean;
   onChangeCurrentGroupId: (groupId: number) => void;
   onMoreVertClick: (key: string) => void;
 }
-export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, ...rest }: IGroupProp) {
+export function Tab({ group, isCurrent, onChangeCurrentGroupId, ...rest }: IGroupProp) {
   const [isEditMode, setIsEditMode] = useState(false);
   const [newGroupName, setNewGroupName] = useState(group.name);
   const { trigger: editTrigger, isMutating: editIsMutating } = GroupSwr.edit();
@@ -40,13 +39,9 @@ export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, ...rest 
     }
 
     setIsEditMode(false);
-    editTrigger({
-      params: {
-        owner_uuid: group.owner_uuid,
-        id: group.id,
-        name: newGroupName.trim(),
-      },
-    }).then(() => rest.onMoreVertClick("rename"));
+    editTrigger({ params: { owner_uuid: group.owner_uuid, id: group.id, name: newGroupName.trim() } }).then(() =>
+      rest.onMoreVertClick("rename"),
+    );
   };
   const onEditInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewGroupName(e.target.value);
@@ -63,7 +58,7 @@ export function Tab({ group, isCurrent, isLast, onChangeCurrentGroupId, ...rest 
   return (
     <Dropdown menu={{ items: GroupDropdownMenus, onClick: onMoreVertClick }} trigger={["contextMenu"]}>
       <div
-        className={["row-v_c pd-v_2 pd-h_4 bg_ffffff br_4 hr", isCurrent && "hred", !isLast && "mg-r_4"].join(" ")}
+        className={["row-v_c mg-r_4 pd-v_2 pd-h_4 bg_ffffff br_4 hr", isCurrent && "hred"].join(" ")}
         onClick={() => onChangeCurrentGroupId(group.id)}
       >
         <span className="google-icon fs_16 mg-r_4">table_chart</span>

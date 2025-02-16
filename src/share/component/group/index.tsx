@@ -30,12 +30,7 @@ export function GroupTab(prop: IViewGroupProp) {
 
   const onMoreVertClick = (key: string, index: number, group: GroupPo) => {
     if (key === "copy") {
-      copyTrigger({
-        params: {
-          owner_uuid: group.owner_uuid,
-          id: group.id,
-        },
-      }).then(() => listMutate());
+      copyTrigger({ params: { owner_uuid: group.owner_uuid, id: group.id } }).then(() => listMutate());
     }
 
     if (key === "rename") listMutate();
@@ -46,12 +41,7 @@ export function GroupTab(prop: IViewGroupProp) {
         onChangeCurrentGroupId(groups.filter((i) => i.id !== currentGroupId)[0].id);
       }
 
-      removeTrigger({
-        params: {
-          owner_uuid: group.owner_uuid,
-          id: group.id,
-        },
-      }).then(() => listMutate());
+      removeTrigger({ params: { owner_uuid: group.owner_uuid, id: group.id } }).then(() => listMutate());
     }
   };
 
@@ -68,14 +58,9 @@ export function GroupTab(prop: IViewGroupProp) {
         : [groups[destination.index].sore_order, groups[destination.index + 1]?.sore_order || 0];
 
     const [start, end] = range;
-    moveTrigger({
-      params: {
-        owner_uuid: groups[source.index].owner_uuid,
-        id: groups[source.index].id,
-        start,
-        end,
-      },
-    }).then(() => listMutate());
+    moveTrigger({ params: { owner_uuid: groups[source.index].owner_uuid, id: groups[source.index].id, start, end } }).then(() =>
+      listMutate(),
+    );
     arrayMoveMutable(groups, source.index, destination.index);
   };
 
@@ -99,7 +84,6 @@ export function GroupTab(prop: IViewGroupProp) {
                       <Tab
                         group={group}
                         isCurrent={group.id === currentGroupId}
-                        isLast={groups.length === index + 1}
                         key={group.id}
                         onChangeCurrentGroupId={onChangeCurrentGroupId}
                         onMoreVertClick={($event) => onMoreVertClick($event, index, group)}
@@ -114,7 +98,8 @@ export function GroupTab(prop: IViewGroupProp) {
         </Droppable>
       </DragDropContext>
 
-      {!!groups.length && <Divider type="vertical" />}
+      {!!groups.length && <div className="h_16 mg-r_4 br_r"></div>}
+      {/* {!!groups.length && <Divider type="vertical" />} */}
 
       <Add></Add>
     </div>

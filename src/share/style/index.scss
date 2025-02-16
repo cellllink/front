@@ -1,6 +1,6 @@
-@import "./reset";
-@import "./override.antd";
-@import "./var";
-@import "./meta";
-@import "./common";
-@import "google.icon";
+@use "./reset";
+@use "./overrideAntd";
+@use "./var";
+@use "./meta";
+@use "./common";
+@use "googleIcon";

@@ -27,17 +27,13 @@ export default defineConfig({
       // overlay: false,
     },
   },
-  build: {
-    rollupOptions: {
-      input: "index.html",
-      output: {
-        dir: `dist/${project}`,
+  build: { rollupOptions: { input: "index.html", output: { dir: `dist/${project}` } } },
+  resolve: { alias: { "@share": resolve("./src/share") } },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler", // or "modern"
       },
-    },
-  },
-  resolve: {
-    alias: {
-      "@share": resolve("./src/share"),
     },
   },
   plugins: [
@@ -47,12 +43,7 @@ export default defineConfig({
       minify: true,
       entry: `src/${project}/index.tsx`,
       template: "index.html",
-      inject: {
-        data: {
-          title: project,
-          injectScript: `<script type="module" src="/src/${project}/index.tsx"></script>`,
-        },
-      },
+      inject: { data: { title: project, injectScript: `<script type="module" src="/src/${project}/index.tsx"></script>` } },
     }),
   ],
 });

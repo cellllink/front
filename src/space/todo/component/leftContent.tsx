@@ -1,27 +1,6 @@
 import { getMenuItem } from "@share/util/antd.util";
-import { Dropdown, Radio } from "antd";
+import { Dropdown } from "antd";
 import { useState } from "react";
-
-function RadioButtons() {
-  return (
-    <div className="h_34 row-v_c">
-      <Radio.Group block defaultValue="sunny" buttonStyle="solid">
-        {[
-          { name: "一天", key: "sunny" },
-          { name: "重要", key: "flag" },
-          { name: "收集", key: "box" },
-        ].map((item) => (
-          <Radio.Button value={item.key}>
-            <div className="row_c_c">
-              <span className="google-icon fs_16 mg-r_4">{item.key}</span>
-              {item.name}
-            </div>
-          </Radio.Button>
-        ))}
-      </Radio.Group>
-    </div>
-  );
-}
 
 function SystemDefault() {
   return (
@@ -107,8 +86,8 @@ export function CustomGroupList() {
   );
 }
 
-interface LeftProp {}
-export function Left({}: LeftProp) {
+interface LeftContentProp {}
+export function LeftContent({}: LeftContentProp) {
   return (
     <div className="w_180 min-w_180 h_100% column pd_4 br_r">
       <SystemDefault />

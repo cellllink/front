@@ -12,7 +12,7 @@ const AddDropdownMenus = [
   ),
   getMenuItem(
     <div className="row-v_c">
-      <span className="google-icon mg-r_4 fs_16">view_column</span>看板视图
+      <span className="google-icon mg-r_4 fs_16">view_kanban</span>看板视图
     </div>,
     "board",
   ),

@@ -42,46 +42,22 @@ export const MetacssRules: ConfigBase["rules"] = [
   // flex
   ["row", { display: "flex" }],
   ["column", { display: "flex", "flex-direction": "column" }],
-  [
-    /^row-h_(sb|sa|bl|sh|s|c|e)/,
-    ([, d]) => ({
-      display: "flex",
-      "justify-content": FlexKeyValues[d as FlexKey],
-    }),
-  ],
-  [
-    /^row-v_(sb|sa|bl|sh|s|c|e)/,
-    ([, d]) => ({
-      display: "flex",
-      "align-items": FlexKeyValues[d as FlexKey],
-    }),
-  ],
+  [/^row-h_(sb|sa|bl|sh|s|c|e)/, ([, d]) => ({ display: "flex", "justify-content": FlexKeyValues[d as FlexKey] })],
+  [/^row-v_(sb|sa|bl|sh|s|c|e)/, ([, d]) => ({ display: "flex", "align-items": FlexKeyValues[d as FlexKey] })],
   [
     /^row_(sb|sa|bl|sh|s|c|e)_(sb|sa|bl|sh|s|c|e)/,
-    ([, v, h]) => ({
-      display: "flex",
-      "align-items": FlexKeyValues[v as FlexKey],
-      "justify-content": FlexKeyValues[h as FlexKey],
-    }),
+    ([, v, h]) => ({ display: "flex", "align-items": FlexKeyValues[v as FlexKey], "justify-content": FlexKeyValues[h as FlexKey] }),
   ],
   ["row-wp_w", { "flex-wrap": "wrap" }],
   ["row-wp_wr", { "flex-wrap": "wrap-reverse" }],
   [/^row-gap_(\d+)$/, ([, d]) => ({ "row-gap": `${d}px` })],
   [
     /^column-h_(sb|sa|bl|sh|s|c|e)/,
-    ([, d]) => ({
-      display: "flex",
-      "flex-direction": "column",
-      "justify-content": FlexKeyValues[d as FlexKey],
-    }),
+    ([, d]) => ({ display: "flex", "flex-direction": "column", "justify-content": FlexKeyValues[d as FlexKey] }),
   ],
   [
     /^column-v_(sb|sa|bl|sh|s|c|e)/,
-    ([, d]) => ({
-      display: "flex",
-      "flex-direction": "column",
-      "align-items": FlexKeyValues[d as FlexKey],
-    }),
+    ([, d]) => ({ display: "flex", "flex-direction": "column", "align-items": FlexKeyValues[d as FlexKey] }),
   ],
   [
     /^column_(sb|sa|bl|sh|s|c|e)_(sb|sa|bl|sh|s|c|e)/,
@@ -98,6 +74,7 @@ export const MetacssRules: ConfigBase["rules"] = [
   [/^flex_(\d+)$/, ([, d]) => ({ flex: `${d}` })],
 
   /* 盒模型 */
+  ["dp_n", { display: "none" }],
   ["dp_b", { display: "block" }],
   ["dp_i", { display: "inline" }],
   ["dp_ib", { display: "inline-block" }],
@@ -161,6 +138,10 @@ export const MetacssRules: ConfigBase["rules"] = [
   [/^c_([0-9a-zA-Z]{6})$/, ([, d]) => ({ color: `#${d}` })],
   // 背景颜色
   [/^bg_([0-9a-zA-Z]{6})$/, ([, d]) => ({ "background-color": `#${d}` })],
+  [
+    /^bg_([0-9]{1,3})_([0-9]{1,3})_([0-9]{1,3})_([0-9]{1,3})$/,
+    ([, r, g, b, a]) => ({ "background-color": `rgba(${r}, ${g}, ${b}, ${+a / 100})` }),
+  ],
   // 字体大小
   [/^fs_(\d+)$/, ([, d]) => ({ "font-size": `${d}px` })],
   // 行高
